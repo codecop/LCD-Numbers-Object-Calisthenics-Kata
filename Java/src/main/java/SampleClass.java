@@ -3,14 +3,14 @@ public class SampleClass {
 
     private int a;
     private int b;
-    private int thirdField;
+    private int thirdField; // ! third field
 
     public void withElse() {
         if (a == b) {
-            System.out.println("==1");
+            a = thirdField;
         } else {
-            // !else
-            System.out.println("<>1");
+            // ! else 
+            b = thirdField;
         }
     }
 }
