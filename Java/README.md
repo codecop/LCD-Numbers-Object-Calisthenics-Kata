@@ -19,6 +19,7 @@ The language is Java with JUnit.
 
 Using the Maven PMD Plugin the code is checked for compliance with the Object Calisthenics' rules
 using the [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules). The rules are checked on each `mvn test`.
+You can check the rule on their own with `mvn pmd:check`.
 
 ### License ###
 This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
