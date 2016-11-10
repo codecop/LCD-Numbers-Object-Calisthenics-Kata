@@ -32,24 +32,23 @@ public class Lcd {
     }
 
     private void expandY(List<String> template) {
-        if (size.value() == 2) {
-            template.add(3, template.get(3));
-            template.add(1, template.get(1));
-        }
+        repeat(() -> template.add(3, template.get(3)));
+        repeat(() -> template.add(1, template.get(1)));
     }
 
     private String expandX(String line) {
         StringBuilder buf = new StringBuilder(line.length() + size.value());
         buf.append(line.substring(0, 1));
         String c = line.substring(1, 2);
-        repeat(buf, c);
+        buf.append(c);
+        repeat(() -> buf.append(c));
         buf.append(line.substring(2));
         return buf.toString();
     }
 
-    private void repeat(StringBuilder buf, String c) {
-        for (int i = 1; i <= size.value(); i++) {
-            buf.append(c);
+    private void repeat(Runnable code) {
+        for (int i = 2; i <= size.value(); i++) {
+            code.run();
         }
     }
 }
