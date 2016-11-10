@@ -4,7 +4,9 @@ import static java.util.stream.Collectors.joining;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lcd {
 
@@ -32,13 +34,10 @@ public class Lcd {
     }
 
     private List<String> templateFor(int number) {
-        List<String> original;
-        if (number == 1) {
-            original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
-        } else {
-            original = Arrays.asList(" - ", "  |", " - ", "|  ", " - ");
-        }
-        return original;
+        Map<Integer, List<String>> templates = new HashMap<>();
+        templates.put(1, Arrays.asList("   ", "  |", "   ", "  |", "   "));
+        templates.put(2, Arrays.asList(" - ", "  |", " - ", "|  ", " - "));
+        return templates.get(number);
     }
 
     private void expandY(List<String> template) {
