@@ -2,20 +2,35 @@ package calisthenics;
 
 public class Lcd {
 
+    private final int size;
+
     public Lcd() {
         this(1);
     }
 
     public Lcd(int size) {
-        // TODO Auto-generated constructor stub
+        this.size = size;
     }
 
     public String format(int number) { // xNOPMD - Primitive Obsession is public API
-        return "   \n" + //
-                "  |\n" + //
-                "   \n" + //
-                "  |\n" + //
-                "   \n";
+        if (size == 1) {
+            return "   \n" + //
+                    "  |\n" + //
+                    "   \n" + //
+                    "  |\n" + //
+                    "   \n";
+        }
+        if (size == 2) {
+            return "    \n" + //
+                    "   |\n" + //
+                    "   |\n" + //
+                    "    \n" + //
+                    "   |\n" + //
+                    "   |\n" + //
+                    "    \n";
+
+        }
+        return null;
     }
 
 }
