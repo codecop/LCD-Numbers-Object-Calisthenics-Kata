@@ -1,9 +1,10 @@
 package calisthenics;
 
+import static java.util.stream.Collectors.joining;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lcd {
 
@@ -18,14 +19,16 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        List<String> template = new ArrayList<>(Arrays.asList("   ", "  |", "   ", "  |", "   "));
-        
+        List<String> original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
+        List<String> template = new ArrayList<>(original);
+
         expandY(template);
-        
+
+        String cr = "\n";
         return template. // NOPMD? Stream is same type & pattern is like that
                 stream(). //
                 map(this::expandX). //
-                collect(Collectors.joining("\n")) + "\n";
+                collect(joining(cr)) + cr;
     }
 
     private void expandY(List<String> template) {
