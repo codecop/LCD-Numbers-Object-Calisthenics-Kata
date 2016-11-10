@@ -3,7 +3,11 @@ package calisthenics;
 public class Lcd {
 
     public String format(int number) {
-        return null;
+        return "   \n"
+             + "  |\n"
+             + "   \n"
+             + "  |\n"
+             + "   \n";
     }
 
 }
