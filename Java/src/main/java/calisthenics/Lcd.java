@@ -19,7 +19,12 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        List<String> original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
+        List<String> original;
+        if (number == 1) {
+            original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
+        } else {
+            original = Arrays.asList(" - ", "  |", " - ", "|  ", " - ");
+        }
         List<String> template = new ArrayList<>(original);
 
         expandY(template);
