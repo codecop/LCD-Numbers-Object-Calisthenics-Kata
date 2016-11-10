@@ -1,6 +1,7 @@
 package calisthenics;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lcd {
@@ -17,19 +18,17 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         if (size.value() == 1) {
-            return Arrays.asList("   ", "  |", "   ", "  |", "   ").//
-            stream().//
-            collect(Collectors.joining("\n")) + "\n";
+            List<String> template = Arrays.asList("   ", "  |", "   ", "  |", "   ");
+            return template.//
+                    stream().//
+                    collect(Collectors.joining("\n")) + "\n";
         }
         if (size.value() == 2) {
-            return x("   \n") + //
-                    x("  |\n") + //
-                    x("  |\n") + //
-                    x("   \n") + //
-                    x("  |\n") + //
-                    x("  |\n") + //
-                    x("   \n");
-
+            List<String> template = Arrays.asList("   ", "  |", "  |", "   ", "  |", "  |", "   ");
+            return template.//
+                    stream().//
+                    map(this::x).
+                    collect(Collectors.joining("\n")) + "\n";
         }
         return null;
     }
