@@ -19,10 +19,12 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         List<String> template = new ArrayList<>(Arrays.asList("   ", "  |", "   ", "  |", "   "));
+        
         expandY(template);
-        return template.//
-                stream().//
-                map(this::expandX).//
+        
+        return template. // NOPMD? Stream is same type & pattern is like that
+                stream(). //
+                map(this::expandX). //
                 collect(Collectors.joining("\n")) + "\n";
     }
 
