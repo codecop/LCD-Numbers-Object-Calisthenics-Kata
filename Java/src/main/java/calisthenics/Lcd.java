@@ -27,14 +27,19 @@ public class Lcd {
             List<String> template = Arrays.asList("   ", "  |", "  |", "   ", "  |", "  |", "   ");
             return template.//
                     stream().//
-                    map(this::x).
-                    collect(Collectors.joining("\n")) + "\n";
+                    map(this::x).collect(Collectors.joining("\n")) + "\n";
         }
         return null;
     }
 
     private String x(String line) {
+        StringBuilder buf = new StringBuilder(line.length() + size.value());
+        buf.append(line.substring(0, 1));
         String c = line.substring(1, 2);
-        return line.substring(0, 1) + c + c + line.substring(2);
+        for (int i = 1; i <= size.value(); i++) {
+            buf.append(c);
+        }
+        buf.append(line.substring(2));
+        return buf.toString();
     }
 }
