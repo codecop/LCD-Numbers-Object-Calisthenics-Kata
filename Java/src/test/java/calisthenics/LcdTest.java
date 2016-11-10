@@ -19,7 +19,7 @@ public class LcdTest {
 
     @Test
     public void shouldReturnOneSize2() {
-        Lcd lcd = new Lcd(2);
+        Lcd lcd = new Lcd(new Size(2));
         String lines = lcd.format(1);
         assertEquals("    \n" + //
                 "   |\n" + //

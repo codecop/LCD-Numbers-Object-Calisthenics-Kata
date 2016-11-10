@@ -2,25 +2,25 @@ package calisthenics;
 
 public class Lcd {
 
-    private final int size;
+    private final Size size;
 
     public Lcd() {
-        this(1);
+        this(Size.defaultSize());
     }
 
-    public Lcd(int size) {
+    public Lcd(Size size) {
         this.size = size;
     }
 
-    public String format(int number) { // xNOPMD - Primitive Obsession is public API
-        if (size == 1) {
+    public String format(int number) { // NO PMD - Primitive Obsession is public API
+        if (size.value() == 1) {
             return "   \n" + //
                     "  |\n" + //
                     "   \n" + //
                     "  |\n" + //
                     "   \n";
         }
-        if (size == 2) {
+        if (size.value() == 2) {
             return "    \n" + //
                     "   |\n" + //
                     "   |\n" + //
