@@ -19,21 +19,14 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         List<String> template = new ArrayList<>(Arrays.asList("   ", "  |", "   ", "  |", "   "));
-        if (size.value() == 1) {
-            return template.//
-                    stream().//
-                    map(this::expandX).//
-                    collect(Collectors.joining("\n")) + "\n";
-        }
         if (size.value() == 2) {
             template.add(3, template.get(3));
             template.add(1, template.get(1));
-            return template.//
-                    stream().//
-                    map(this::expandX).//
-                    collect(Collectors.joining("\n")) + "\n";
         }
-        return null;
+        return template.//
+                stream().//
+                map(this::expandX).//
+                collect(Collectors.joining("\n")) + "\n";
     }
 
     private String expandX(String line) {
