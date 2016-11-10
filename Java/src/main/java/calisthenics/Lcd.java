@@ -1,5 +1,8 @@
 package calisthenics;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Lcd {
 
     private final Size size;
@@ -14,11 +17,9 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         if (size.value() == 1) {
-            return "   \n" + //
-                    "  |\n" + //
-                    "   \n" + //
-                    "  |\n" + //
-                    "   \n";
+            return Arrays.asList("   ", "  |", "   ", "  |", "   ").//
+            stream().//
+            collect(Collectors.joining("\n")) + "\n";
         }
         if (size.value() == 2) {
             return x("   \n") + //
