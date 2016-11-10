@@ -21,16 +21,20 @@ public class Lcd {
                     "   \n";
         }
         if (size.value() == 2) {
-            return "    \n" + //
-                    "   |\n" + //
-                    "   |\n" + //
-                    "    \n" + //
-                    "   |\n" + //
-                    "   |\n" + //
-                    "    \n";
+            return x("   \n") + //
+                    x("  |\n") + //
+                    x("  |\n") + //
+                    x("   \n") + //
+                    x("  |\n") + //
+                    x("  |\n") + //
+                    x("   \n");
 
         }
         return null;
     }
 
+    private String x(String line) {
+        String c = line.substring(1, 2);
+        return line.substring(0, 1) + c + c + line.substring(2);
+    }
 }
