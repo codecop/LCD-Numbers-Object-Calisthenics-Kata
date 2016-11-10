@@ -19,12 +19,7 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        List<String> original;
-        if (number == 1) {
-            original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
-        } else {
-            original = Arrays.asList(" - ", "  |", " - ", "|  ", " - ");
-        }
+        List<String> original = templateFor(number);
         List<String> template = new ArrayList<>(original);
 
         expandY(template);
@@ -34,6 +29,16 @@ public class Lcd {
                 stream(). //
                 map(this::expandX). //
                 collect(joining(cr)) + cr;
+    }
+
+    private List<String> templateFor(int number) {
+        List<String> original;
+        if (number == 1) {
+            original = Arrays.asList("   ", "  |", "   ", "  |", "   ");
+        } else {
+            original = Arrays.asList(" - ", "  |", " - ", "|  ", " - ");
+        }
+        return original;
     }
 
     private void expandY(List<String> template) {
