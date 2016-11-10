@@ -21,18 +21,20 @@ public class Lcd {
             List<String> template = Arrays.asList("   ", "  |", "   ", "  |", "   ");
             return template.//
                     stream().//
+                    map(this::expandX).//
                     collect(Collectors.joining("\n")) + "\n";
         }
         if (size.value() == 2) {
             List<String> template = Arrays.asList("   ", "  |", "  |", "   ", "  |", "  |", "   ");
             return template.//
                     stream().//
-                    map(this::x).collect(Collectors.joining("\n")) + "\n";
+                    map(this::expandX).//
+                    collect(Collectors.joining("\n")) + "\n";
         }
         return null;
     }
 
-    private String x(String line) {
+    private String expandX(String line) {
         StringBuilder buf = new StringBuilder(line.length() + size.value());
         buf.append(line.substring(0, 1));
         String c = line.substring(1, 2);
