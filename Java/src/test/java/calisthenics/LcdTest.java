@@ -30,4 +30,14 @@ public class LcdTest {
                 "    \n", lines);
     }
 
+    @Test
+    public void shouldReturnTwoSize1() {
+        Lcd lcd = new Lcd();
+        String lines = lcd.format(2);
+        assertEquals(" - \n" + //
+                "  |\n" + //
+                " - \n" + //
+                "|  \n" + //
+                " - \n", lines);
+    }
 }
