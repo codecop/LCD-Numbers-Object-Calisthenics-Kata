@@ -27,13 +27,14 @@ public class Lcd {
         expandY(template);
 
         String cr = "\n";
-        return template. // NOPMD? Stream is same type & pattern is like that
+        return template. // NOPMD? LoD Stream is same type & pattern is like that
                 stream(). //
                 map(this::expandX). //
                 collect(joining(cr)) + cr;
     }
 
     private List<String> templateFor(int number) {
+        // TODO make field
         Map<Integer, List<String>> templates = new HashMap<>();
         templates.put(1, Arrays.asList("   ", "  |", "   ", "  |", "   "));
         templates.put(2, Arrays.asList(" - ", "  |", " - ", "|  ", " - "));
