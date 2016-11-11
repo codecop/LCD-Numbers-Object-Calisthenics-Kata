@@ -27,13 +27,11 @@ public class Lcd {
         return expandedNumber(number).collect(joining(cr)) + cr;
     }
 
-    private Stream<String> expandedNumber(int number) {
+    private Stream<String> expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
         if (number < 10) {
             return expandedDigit(number);
         }
-        Iterator<String> right = expandedDigit(number % 10).iterator();
-        Stream<String> left = expandedNumber(number / 10);
-        return left.map(line -> line + right.next());
+        return append(number / 10, number % 10);
     }
 
     private Stream<String> expandedDigit(int number) {
@@ -70,4 +68,11 @@ public class Lcd {
         buf.append(line.substring(2));
         return buf.toString();
     }
+
+    private Stream<String> append(int leftDigit, int rightDigit) {
+        Stream<String> left = expandedNumber(leftDigit);
+        Iterator<String> right = expandedDigit(rightDigit).iterator();
+        return left.map(line -> line + right.next());
+    }
+
 }
