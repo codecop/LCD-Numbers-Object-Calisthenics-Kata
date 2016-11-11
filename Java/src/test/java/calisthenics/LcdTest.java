@@ -51,4 +51,17 @@ public class LcdTest {
                      "  ||  \n" + //
                      "    - \n", lines);
     }
+
+    @Test
+    public void shouldReturn12Size2() {
+        Lcd lcd = new Lcd(new Size(2));
+        String lines = lcd.format(12);
+        assertEquals("     -- \n" + //
+                     "   |   |\n" + //
+                     "   |   |\n" + //
+                     "     -- \n" + //
+                     "   ||   \n" + //
+                     "   ||   \n" + //
+                     "     -- \n", lines);
+    }
 }

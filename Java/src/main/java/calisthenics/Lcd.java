@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Lcd {
 
@@ -29,10 +30,11 @@ public class Lcd {
             
             expandY(template);
             
-            String cr = "\n";
-            return template. // NOPMD? LoD Stream is same type & pattern is like that
+            Stream<String> x = template. // NOPMD? LoD Stream is same type & pattern is like that
                     stream(). //
-                    map(this::expandX). //
+                    map(this::expandX);
+            String cr = "\n";
+            return x. //
                     collect(joining(cr)) + cr;
         }
         
@@ -42,10 +44,11 @@ public class Lcd {
         template = template.stream().map(line -> line + second.next()).collect(Collectors.toList());
         expandY(template);
         
-        String cr = "\n";
-        return template. // NOPMD? LoD Stream is same type & pattern is like that
+        Stream<String> x = template. // NOPMD? LoD Stream is same type & pattern is like that
                 stream(). //
-                map(this::expandX). //
+                map(this::expandX);
+        String cr = "\n";
+        return x. //
                 collect(joining(cr)) + cr;
     }
 
