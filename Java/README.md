@@ -17,9 +17,10 @@ The language is Java with JUnit.
 1. Not More Than Two Instance Variables.
 1. No Getters/Setters/Properties.
 
-Using the Maven PMD Plugin the code is checked for compliance with the Object Calisthenics' rules
-using the [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules). The rules are checked on each `mvn test`.
-You can check the rule on their own with `mvn pmd:check`.
+Using the Maven PMD Plugin the code is checked for compliance with the Object Calisthenics' rules above.
+Using the [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules) the rules are checked on each `mvn test`.
+You can check the rule on their own with `mvn pmd:check`. By using the [Maven Shell](https://github.com/jdillon/mvnsh) the
+time to run the check can be reduced by 50%. 
 
 ### License ###
 This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
