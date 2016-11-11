@@ -16,17 +16,17 @@ public class Lines {
 
     private final List<String> lines;
 
-    public Lines(List<String> lines) {
+    /* for Templates only */ Lines(List<String> lines) {
         this.lines = lines;
     }
 
-    public Lines(Stream<String> lines) {
+    private Lines(Stream<String> lines) {
         this(lines.collect(toList()));
     }
 
-    public Lines duplicate(int index) { // NOPMD PrimitiveObsession - is an index
+    public Lines duplicate(int lineIndex) { // NOPMD PrimitiveObsession - is an index
         List<String> list = new ArrayList<>(lines);
-        list.add(index, list.get(index));
+        list.add(lineIndex, list.get(lineIndex));
         return new Lines(list);
     }
 
@@ -39,7 +39,7 @@ public class Lines {
         return lines.stream();
     }
 
-    public Lines join(Lines other) {
+    public Lines append(Lines other) {
         Iterator<String> right = other.lines.iterator(); // NOPMD LoD is too strict for Streams - still only one dot.
         return map(line -> line + right.next());
     }

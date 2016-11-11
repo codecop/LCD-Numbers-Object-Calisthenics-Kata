@@ -54,7 +54,7 @@ public class Lcd {
     private Lines append(int leftDigit, int rightDigit) {
         Lines left = asNumber(leftDigit);
         Lines right = asDigit(rightDigit);
-        return left.join(right); // NOPMD LoD false positive, get back same type
+        return left.append(right); // NOPMD LoD false positive, get back same type
     }
 
 }
