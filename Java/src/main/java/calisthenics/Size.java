@@ -1,7 +1,7 @@
 package calisthenics;
 
 /**
- * Value object for Bar Size.
+ * Value object for Bar Size. No Getter for the value!
  */
 public class Size {
 
