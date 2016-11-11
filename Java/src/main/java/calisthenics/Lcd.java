@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Lcd {
@@ -24,20 +23,17 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
+        Stream<String> x;
         if (number < 10) {
-            Stream<String> x = digit(number);
-            String cr = "\n";
-            return x. //
-                    collect(joining(cr)) + cr;
+            x = digit(number);
+        } else {
+            Stream<String> left = digit(number / 10);
+            Iterator<String> right = digit(number % 10).iterator();
+            x = left.map(line -> line + right.next());
         }
 
-        Stream<String> left = digit(number / 10);
-        Iterator<String> right = digit(number % 10).iterator();
-        Stream<String> x = left.map(line -> line + right.next());
-
         String cr = "\n";
-        return x. //
-                collect(joining(cr)) + cr;
+        return x.collect(joining(cr)) + cr;
     }
 
     private Stream<String> digit(int number) {
