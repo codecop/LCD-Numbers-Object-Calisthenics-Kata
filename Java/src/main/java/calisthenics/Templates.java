@@ -2,20 +2,26 @@ package calisthenics;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * First class collection of the templates, ie the string patterns.
+ */
 public class Templates {
 
-    private final Map<Integer, List<String>> templates = new HashMap<>();
+    private final Map<Integer, Lines> templates = new HashMap<>();
 
     public Templates() {
-        templates.put(1, Arrays.asList("   ", "  |", "   ", "  |", "   "));
-        templates.put(2, Arrays.asList(" - ", "  |", " - ", "|  ", " - "));
+        add(1, "   ", "  |", "   ", "  |", "   ");
+        add(2, " - ", "  |", " - ", "|  ", " - ");
+    }
+
+    private void add(int index, String... lines) {
+        templates.put(index, new Lines(Arrays.asList(lines)));
     }
 
     public Lines digit(int number) { // NOPMD - Primitive Obsession - this is a number here?
-        return new Lines(templates.get(number));
+        return templates.get(number);
     }
 
 }
