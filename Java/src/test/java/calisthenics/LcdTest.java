@@ -11,10 +11,10 @@ public class LcdTest {
         Lcd lcd = new Lcd();
         String lines = lcd.format(1);
         assertEquals("   \n" + //
-                "  |\n" + //
-                "   \n" + //
-                "  |\n" + //
-                "   \n", lines);
+                     "  |\n" + //
+                     "   \n" + //
+                     "  |\n" + //
+                     "   \n", lines);
     }
 
     @Test
@@ -22,12 +22,12 @@ public class LcdTest {
         Lcd lcd = new Lcd(new Size(2));
         String lines = lcd.format(1);
         assertEquals("    \n" + //
-                "   |\n" + //
-                "   |\n" + //
-                "    \n" + //
-                "   |\n" + //
-                "   |\n" + //
-                "    \n", lines);
+                     "   |\n" + //
+                     "   |\n" + //
+                     "    \n" + //
+                     "   |\n" + //
+                     "   |\n" + //
+                     "    \n", lines);
     }
 
     @Test
@@ -35,10 +35,10 @@ public class LcdTest {
         Lcd lcd = new Lcd();
         String lines = lcd.format(2);
         assertEquals(" - \n" + //
-                "  |\n" + //
-                " - \n" + //
-                "|  \n" + //
-                " - \n", lines);
+                     "  |\n" + //
+                     " - \n" + //
+                     "|  \n" + //
+                     " - \n", lines);
     }
 
     @Test
@@ -46,9 +46,9 @@ public class LcdTest {
         Lcd lcd = new Lcd();
         String lines = lcd.format(12);
         assertEquals("    - \n" + //
-                "  |  |\n" + //
-                "    - \n" + //
-                "  ||  \n" + //
-                "    - \n", lines);
+                     "  |  |\n" + //
+                     "    - \n" + //
+                     "  ||  \n" + //
+                     "    - \n", lines);
     }
 }

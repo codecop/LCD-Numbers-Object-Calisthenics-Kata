@@ -8,7 +8,7 @@ public class Size {
     private int value;
 
     public static Size defaultSize() { // NOPMD factory method is no getter
-        return new Size(1); 
+        return new Size(1);
         // TODO new Size(1) is ok, is not this.x or simply x.
     }
 
