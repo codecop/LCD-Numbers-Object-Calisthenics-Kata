@@ -1,11 +1,11 @@
 package calisthenics;
 
 /**
- * Value object Size.
+ * Value object for Bar Size.
  */
 public class Size {
 
-    private int value;
+    private int count;
 
     public static Size defaultSize() { // NOPMD factory method is no getter
         return new Size(1);
@@ -13,11 +13,13 @@ public class Size {
     }
 
     public Size(int value) {
-        this.value = value;
+        this.count = value;
     }
 
-    public int value() {
-        return value;
+    public void repeat(Runnable code) {
+        for (int i = 2; i <= count; i++) {
+            code.run();
+        }
     }
 
 }
