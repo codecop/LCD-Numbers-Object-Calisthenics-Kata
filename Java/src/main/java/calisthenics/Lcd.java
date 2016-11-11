@@ -2,8 +2,8 @@ package calisthenics;
 
 public class Lcd {
 
+    private final Templates templates = new Templates();
     private final Size size;
-    private final Templates template = new Templates();
 
     public Lcd() {
         this(Size.defaultSize());
@@ -14,18 +14,18 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        return expandedNumber(number).join(); // NOPMD LoD is too strict but only one dot.
+        return asNumber(number).join(); // NOPMD LoD is too strict but only one dot.
     }
 
-    private Lines expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
+    private Lines asNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
         if (number < 10) {
-            return expandedDigit(number);
+            return asDigit(number);
         }
         return append(number / 10, number % 10);
     }
 
-    private Lines expandedDigit(int number) {
-        Lines digit = template.digit(number);
+    private Lines asDigit(int number) {
+        Lines digit = templates.digit(number);
         expandY(digit);
         return expandX(digit);
     }
@@ -50,8 +50,8 @@ public class Lcd {
     }
 
     private Lines append(int leftDigit, int rightDigit) {
-        Lines left = expandedNumber(leftDigit);
-        Lines right = expandedDigit(rightDigit);
+        Lines left = asNumber(leftDigit);
+        Lines right = asDigit(rightDigit);
         return left.join(right); // NOPMD LoD false positive, get back same type
     }
 
