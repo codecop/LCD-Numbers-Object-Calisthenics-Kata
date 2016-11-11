@@ -5,8 +5,10 @@ import static java.util.stream.Collectors.joining;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Lcd {
 
@@ -21,11 +23,25 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        List<String> original = templateFor(number);
+        if (number < 10) {
+            List<String> original = templateFor(number);
+            List<String> template = new ArrayList<>(original);
+            
+            expandY(template);
+            
+            String cr = "\n";
+            return template. // NOPMD? LoD Stream is same type & pattern is like that
+                    stream(). //
+                    map(this::expandX). //
+                    collect(joining(cr)) + cr;
+        }
+        
+        List<String> original = templateFor(number / 10);
         List<String> template = new ArrayList<>(original);
-
+        Iterator<String> second = templateFor(number % 10).iterator();
+        template = template.stream().map(line -> line + second.next()).collect(Collectors.toList());
         expandY(template);
-
+        
         String cr = "\n";
         return template. // NOPMD? LoD Stream is same type & pattern is like that
                 stream(). //
