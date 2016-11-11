@@ -13,7 +13,7 @@ public class Lcd {
         this.size = size;
     }
 
-    public String format(int number) { // NO PMD - Primitive Obsession is public API
+    public String format(int number) { // NOPMD - Primitive Obsession is public API
         return asNumber(number).join(); // NOPMD LoD is too strict but only one dot.
     }
 
