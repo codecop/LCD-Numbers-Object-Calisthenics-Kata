@@ -14,8 +14,7 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        String cr = "\n";
-        return expandedNumber(number).join(cr);// NOPMD LoD is too strict but only one dot.
+        return expandedNumber(number).join(); // NOPMD LoD is too strict but only one dot.
     }
 
     private Lines expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
@@ -37,8 +36,7 @@ public class Lcd {
     }
 
     private Lines expandX(Lines lines) {
-        return lines.map(this::expandX);
-        // NOPMD? LoD Stream is same type & pattern is like that
+        return lines.map(this::expandX); // NOPMD LoD false positive, get back same type
     }
 
     private String expandX(String line) {
@@ -54,7 +52,7 @@ public class Lcd {
     private Lines append(int leftDigit, int rightDigit) {
         Lines left = expandedNumber(leftDigit);
         Lines right = expandedDigit(rightDigit);
-        return left.join(right);
+        return left.join(right); // NOPMD LoD false positive, get back same type
     }
 
 }

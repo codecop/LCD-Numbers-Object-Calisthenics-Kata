@@ -21,12 +21,12 @@ public class Lines {
         this(lines.collect(toList()));
     }
 
-    public void duplicate(int index) {
+    public void duplicate(int index) { // NOPMD PrimitiveObsession - but is an index
         lines.add(index, lines.get(index));
     }
 
     public Lines map(Function<String, String> mapper) {
-        Stream<String> newLines = stream().map(mapper);
+        Stream<String> newLines = stream().map(mapper); // NOPMD LoD is too strict for Streams - still only one dot.
         return new Lines(newLines);
     }
 
@@ -35,13 +35,13 @@ public class Lines {
     }
 
     public Lines join(Lines other) {
-        Iterator<String> right = other.lines.iterator();
+        Iterator<String> right = other.lines.iterator(); // NOPMD LoD is too strict for Streams - still only one dot.
         return map(line -> line + right.next());
-        // NOPMD LoD is too strict but only one dot.
     }
 
-    public String join(String sep) {
-        return stream().collect(joining(sep)) + sep;
+    public String join() {
+        String cr = "\n";
+        return stream().collect(joining(cr)) + cr; // NOPMD LoD is too strict for Streams - still only one dot.
     }
 
 }
