@@ -2,17 +2,14 @@ package calisthenics;
 
 import static java.util.stream.Collectors.joining;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 public class Lcd {
 
     private final Size size;
+    private final Templates template = new Templates();
 
     public Lcd() {
         this(Size.defaultSize());
@@ -35,17 +32,9 @@ public class Lcd {
     }
 
     private Stream<String> expandedDigit(int number) {
-        List<String> digit = new ArrayList<>(digit(number));
+        List<String> digit = template.digit(number);
         expandY(digit);
         return expandX(digit);
-    }
-
-    private List<String> digit(int number) {
-        // TODO make field
-        Map<Integer, List<String>> templates = new HashMap<>();
-        templates.put(1, Arrays.asList("   ", "  |", "   ", "  |", "   "));
-        templates.put(2, Arrays.asList(" - ", "  |", " - ", "|  ", " - "));
-        return templates.get(number);
     }
 
     private void expandY(List<String> template) {
