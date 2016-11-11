@@ -24,7 +24,7 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         String cr = "\n";
-        return expandedNumber(number).collect(joining(cr)) + cr;
+        return expandedNumber(number).collect(joining(cr)) + cr; // NOPMD LoD is too strict but only one dot.
     }
 
     private Stream<String> expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
@@ -71,8 +71,8 @@ public class Lcd {
 
     private Stream<String> append(int leftDigit, int rightDigit) {
         Stream<String> left = expandedNumber(leftDigit);
-        Iterator<String> right = expandedDigit(rightDigit).iterator();
-        return left.map(line -> line + right.next());
+        Iterator<String> right = expandedDigit(rightDigit).iterator(); // NOPMD LoD is too strict but only one dot.
+        return left.map(line -> line + right.next()); // NOPMD LoD is too strict but only one dot.
     }
 
 }
