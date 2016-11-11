@@ -25,31 +25,26 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         if (number < 10) {
-            List<String> original = templateFor(number);
-            List<String> template = new ArrayList<>(original);
-            
-            expandY(template);
-            
-            Stream<String> x = template. // NOPMD? LoD Stream is same type & pattern is like that
-                    stream(). //
-                    map(this::expandX);
+            Stream<String> x = digit(number);
             String cr = "\n";
             return x. //
                     collect(joining(cr)) + cr;
         }
-        
-        List<String> original = templateFor(number / 10);
-        List<String> template = new ArrayList<>(original);
-        Iterator<String> second = templateFor(number % 10).iterator();
-        template = template.stream().map(line -> line + second.next()).collect(Collectors.toList());
-        expandY(template);
-        
-        Stream<String> x = template. // NOPMD? LoD Stream is same type & pattern is like that
-                stream(). //
-                map(this::expandX);
+
+        Stream<String> left = digit(number / 10);
+        Iterator<String> right = digit(number % 10).iterator();
+        Stream<String> x = left.map(line -> line + right.next());
+
         String cr = "\n";
         return x. //
                 collect(joining(cr)) + cr;
+    }
+
+    private Stream<String> digit(int number) {
+        List<String> original = templateFor(number);
+        List<String> template = new ArrayList<>(original);
+        expandY(template);
+        return expandX(template);
     }
 
     private List<String> templateFor(int number) {
@@ -63,6 +58,12 @@ public class Lcd {
     private void expandY(List<String> template) {
         size.repeat(() -> template.add(3, template.get(3)));
         size.repeat(() -> template.add(1, template.get(1)));
+    }
+
+    private Stream<String> expandX(List<String> template) {
+        return template. // NOPMD? LoD Stream is same type & pattern is like that
+                stream(). //
+                map(this::expandX);
     }
 
     private String expandX(String line) {
