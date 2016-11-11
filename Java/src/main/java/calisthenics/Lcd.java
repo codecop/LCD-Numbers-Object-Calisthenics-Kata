@@ -23,27 +23,26 @@ public class Lcd {
     }
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
-        Stream<String> x;
-        if (number < 10) {
-            x = digit(number);
-        } else {
-            Stream<String> left = digit(number / 10);
-            Iterator<String> right = digit(number % 10).iterator();
-            x = left.map(line -> line + right.next());
-        }
-
         String cr = "\n";
-        return x.collect(joining(cr)) + cr;
+        return expandedNumber(number).collect(joining(cr)) + cr;
     }
 
-    private Stream<String> digit(int number) {
-        List<String> original = templateFor(number);
-        List<String> template = new ArrayList<>(original);
-        expandY(template);
-        return expandX(template);
+    private Stream<String> expandedNumber(int number) {
+        if (number < 10) {
+            return expandedDigit(number);
+        }
+        Iterator<String> right = expandedDigit(number % 10).iterator();
+        Stream<String> left = expandedNumber(number / 10);
+        return left.map(line -> line + right.next());
     }
 
-    private List<String> templateFor(int number) {
+    private Stream<String> expandedDigit(int number) {
+        List<String> digit = new ArrayList<>(digit(number));
+        expandY(digit);
+        return expandX(digit);
+    }
+
+    private List<String> digit(int number) {
         // TODO make field
         Map<Integer, List<String>> templates = new HashMap<>();
         templates.put(1, Arrays.asList("   ", "  |", "   ", "  |", "   "));
