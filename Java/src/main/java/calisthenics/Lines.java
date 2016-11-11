@@ -17,15 +17,17 @@ public class Lines {
     private final List<String> lines;
 
     public Lines(List<String> lines) {
-        this.lines = new ArrayList<>(lines);
+        this.lines = lines;
     }
 
     public Lines(Stream<String> lines) {
         this(lines.collect(toList()));
     }
 
-    public void duplicate(int index) { // NOPMD PrimitiveObsession - is an index
-        lines.add(index, lines.get(index));
+    public Lines duplicate(int index) { // NOPMD PrimitiveObsession - is an index
+        List<String> list = new ArrayList<>(lines);
+        list.add(index, list.get(index));
+        return new Lines(list);
     }
 
     public Lines map(Function<String, String> mapper) {

@@ -26,13 +26,15 @@ public class Lcd {
 
     private Lines asDigit(int number) {
         Lines digit = templates.digit(number);
-        expandY(digit);
+        digit = expandY(digit);
         return expandX(digit);
     }
 
-    private void expandY(Lines lines) {
-        size.repeat(() -> lines.duplicate(3));
-        size.repeat(() -> lines.duplicate(1));
+    private Lines expandY(Lines lines) {
+        Lines current = lines;
+        current = size.repeat(current, (x) -> x.duplicate(3)); // NOPMD LoD false positive, get back same type
+        current = size.repeat(current, (x) -> x.duplicate(1)); // NOPMD LoD false positive, get back same type
+        return current;
     }
 
     private Lines expandX(Lines lines) {
