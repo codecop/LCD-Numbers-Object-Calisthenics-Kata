@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ * First class collection of the lines making a single digit.
+ */
 public class Lines {
 
     private final List<String> lines;
@@ -21,7 +24,7 @@ public class Lines {
         this(lines.collect(toList()));
     }
 
-    public void duplicate(int index) { // NOPMD PrimitiveObsession - but is an index
+    public void duplicate(int index) { // NOPMD PrimitiveObsession - is an index
         lines.add(index, lines.get(index));
     }
 
