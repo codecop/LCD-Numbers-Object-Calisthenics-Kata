@@ -1,6 +1,5 @@
 package calisthenics;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +14,8 @@ public class Templates {
         templates.put(2, Arrays.asList(" - ", "  |", " - ", "|  ", " - "));
     }
 
-    public List<String> digit(int number) { // NOPMD - Primitive Obsession - this is a number here?
-        return new ArrayList<>(templates.get(number));
+    public Lines digit(int number) { // NOPMD - Primitive Obsession - this is a number here?
+        return new Lines(templates.get(number));
     }
 
 }

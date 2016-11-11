@@ -1,11 +1,5 @@
 package calisthenics;
 
-import static java.util.stream.Collectors.joining;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
-
 public class Lcd {
 
     private final Size size;
@@ -21,31 +15,30 @@ public class Lcd {
 
     public String format(int number) { // NO PMD - Primitive Obsession is public API
         String cr = "\n";
-        return expandedNumber(number).collect(joining(cr)) + cr; // NOPMD LoD is too strict but only one dot.
+        return expandedNumber(number).join(cr);// NOPMD LoD is too strict but only one dot.
     }
 
-    private Stream<String> expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
+    private Lines expandedNumber(int number) { // NOPMD OneLevelOfIntention - don't know how to do it otherwise?
         if (number < 10) {
             return expandedDigit(number);
         }
         return append(number / 10, number % 10);
     }
 
-    private Stream<String> expandedDigit(int number) {
-        List<String> digit = template.digit(number);
+    private Lines expandedDigit(int number) {
+        Lines digit = template.digit(number);
         expandY(digit);
         return expandX(digit);
     }
 
-    private void expandY(List<String> template) {
-        size.repeat(() -> template.add(3, template.get(3)));
-        size.repeat(() -> template.add(1, template.get(1)));
+    private void expandY(Lines lines) {
+        size.repeat(() -> lines.duplicate(3));
+        size.repeat(() -> lines.duplicate(1));
     }
 
-    private Stream<String> expandX(List<String> template) {
-        return template. // NOPMD? LoD Stream is same type & pattern is like that
-                stream(). //
-                map(this::expandX);
+    private Lines expandX(Lines lines) {
+        return lines.map(this::expandX);
+        // NOPMD? LoD Stream is same type & pattern is like that
     }
 
     private String expandX(String line) {
@@ -58,10 +51,10 @@ public class Lcd {
         return buf.toString();
     }
 
-    private Stream<String> append(int leftDigit, int rightDigit) {
-        Stream<String> left = expandedNumber(leftDigit);
-        Iterator<String> right = expandedDigit(rightDigit).iterator(); // NOPMD LoD is too strict but only one dot.
-        return left.map(line -> line + right.next()); // NOPMD LoD is too strict but only one dot.
+    private Lines append(int leftDigit, int rightDigit) {
+        Lines left = expandedNumber(leftDigit);
+        Lines right = expandedDigit(rightDigit);
+        return left.join(right);
     }
 
 }
