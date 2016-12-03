@@ -19,7 +19,7 @@ The language is Java with JUnit.
 
 ### Checking Code for Compliance ###
 
-The [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules) contain PMD rules to check code for compliance with the Object Calisthenics'.
+The [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules) contain PMD rules to check code for compliance with Object Calisthenics'.
 This project is set up to check the code using the Maven PMD Plugin on each `mvn test`.
 You can also check the rules on their own with `mvn pmd:check`.
 By using the [Maven Shell](https://github.com/jdillon/mvnsh) the time to run the check can be reduced by 50%.
