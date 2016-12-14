@@ -2,6 +2,7 @@
 
 This is a template for the [LCD Numbers Kata](http://rubyquiz.com/quiz14.html).
 The language is Java with JUnit.
+There are sample LCD outputs in the `src/test/resources` folder.
 
 ### Constraints ###
 
