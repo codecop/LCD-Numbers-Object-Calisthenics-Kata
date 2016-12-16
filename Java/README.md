@@ -29,14 +29,13 @@ To check the setup run `mvn test` on the sample code. It will show two violation
     [INFO] PMD Failure: SampleClass:9 Rule:NoElseKeyword Priority:3 No else keyword.
 
 You can also check the rules on their own with `mvn pmd:check`.
-
 By using the [Maven Shell](https://github.com/jdillon/mvnsh) the time to run the check can be reduced by 50%.
 
 ### Limitations of Checking Code ###
 Obviously code analysis cannot find everything.
 For example the `PrimitiveObsession` rule (Wrap All Primitives And Strings) allows primitive values in constructors and getters because they are needed to implement [Value Objects](http://martinfowler.com/bliki/ValueObject.html).
 On the other hand these getters are getters, so `NoGetterAndSetter` will flag them resulting in false positives.
-Rule #5 (One Dot Per Line) is checked using PMD's own `LawOfDemeter`, which checks for the [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter). Now the LoD is not about counting dots per line, it is about used types. 
+Rule #5 (One Dot Per Line) is checked using PMD's own `LawOfDemeter`, which checks for the [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter). Now the LoD is not about counting dots per line, it is about used types.
 So sometimes a single dot in a line will already violate the LoD.
 Finally it is very difficult to check for abbreviations, so rule #6 is not enforced.
 
