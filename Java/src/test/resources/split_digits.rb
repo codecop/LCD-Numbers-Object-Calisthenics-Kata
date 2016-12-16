@@ -17,7 +17,8 @@
       line[column...(column + width)]
     }.map { |line| line + "\n" }
   
-    File.open("#{dir}/number #{digit.to_s}.txt", 'w') { |f|
+    number = (digit + 1) % 10
+    File.open("#{dir}/number #{number.to_s}.txt", 'w') { |f|
       lcd.each { |line| f.write(line) }
     }
   end
