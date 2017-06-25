@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.codecop</groupId>
-    <artifactId>lcd-numbers</artifactId>
+    <artifactId>lcd-numbers-object-calisthenics</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>LCD Numbers Kata with PMD Object Calisthenics Check</name>
     <url>http://rubyquiz.com/quiz14.html</url>
@@ -31,7 +31,25 @@
     </dependencies>
 
     <build>
+        <finalName>LCDNumbersObjectCalisthenics</finalName>
         <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>create-participant-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/assembly/for-participants.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
