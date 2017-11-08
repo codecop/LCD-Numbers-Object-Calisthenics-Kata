@@ -1,1 +1,1 @@
-mvnw pmd:check
+./mvnw pmd:check
