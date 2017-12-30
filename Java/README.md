@@ -7,7 +7,7 @@ are provided as dependencies.
 
 ## Requirements (copied from Ruby Quiz) ##
 
-Write a program that creates an LCD string representation of an integer value 
+Write a program that creates an LCD string representation of an integer value
 using a 4x7 grid of space each, using minus and pipe characters for each digit.
 Each digit is shown below:
 
@@ -31,11 +31,11 @@ There are sample LCD outputs in the `src/test/resources` folder.
 1. Only One Level Of Indentation Per Method.
 1. Don't Use The `else` Keyword.
 1. Wrap All Primitives And Strings.
-1. First Class Collections.
 1. One Dot/Arrow (dereference) Per Line.
 1. Don't Abbreviate (long names).
 1. Keep All Entities Small. (50 lines of code per class)
 1. Not More Than Two Instance Variables.
+1. First Class Collections.
 1. No Getters/Setters/Properties.
 
 ### Checking Code for Compliance ###
@@ -54,13 +54,13 @@ By using the [Maven Shell](https://github.com/jdillon/mvnsh) the time to run the
 ### Limitations of Checking Code ###
 Obviously code analysis cannot find everything.
 For example the `PrimitiveObsession` rule (Wrap All Primitives And Strings) allows primitive values in constructors and getters because they are needed to implement [Value Objects](http://martinfowler.com/bliki/ValueObject.html).
-On the other hand these getters are getters, so `NoGetterAndSetter` will flag them resulting in false positives.
-Rule #5 (One Dot Per Line) is checked using PMD's own `LawOfDemeter`, which checks for the [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter). Now the LoD is not about counting dots per line, it is about used types.
+On the other hand these getters are getters, so `NoGetterAndSetter` will flag them.
+Rule #4 (One Dot Per Line) is checked using PMD's own `LawOfDemeter`, which checks for the [Law Of Demeter](http://www.ccs.neu.edu/home/lieber/LoD.html). Now the LoD is not about counting dots per line, it is about used types.
 So sometimes a single dot in a line will already violate the LoD.
-Finally it is very difficult to check for abbreviations, so rule #6 is not enforced.
+Finally it is very difficult to check for abbreviations, so rule #5 is not enforced.
 
 You can use `// NOPMD` comments and `@SuppressWarnings("PMD")` annotations to suppress false positives.
-I recommend using exact suppressions, e.g. `@SuppressWarnings("PMD.TooManyFields")` to skip issues because other issues at the same line will still be found. Use your good judgement. The goal of this exercise it to follow all nine rules, not to suppress them.
+I recommend using exact suppressions, e.g. `@SuppressWarnings("PMD.TooManyFields")` to skip issues because other issues at the same line will still be found. Use your good judgement. The goal of this exercise is to follow all nine rules, not to suppress them.
 
 ### License ###
 This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
