@@ -11,7 +11,7 @@ class TwoInstanceVariablesChecker(BaseChecker):
     name = 'two-instance-variables'
     priority = -1
     msgs = {
-        'R1281': ('More than two instance variables in class "%s". Split this class.',
+        'R1281': ('More than two instance variables in class "%s"',
                   'more-than-two-instance-variables',
                   'Object Calisthenics Rule 8'),
     }
@@ -30,5 +30,4 @@ class TwoInstanceVariablesChecker(BaseChecker):
 
 
 def register(linter):
-    """required method to auto register this checker"""
     linter.register_checker(TwoInstanceVariablesChecker(linter))
