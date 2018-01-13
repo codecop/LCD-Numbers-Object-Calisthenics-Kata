@@ -62,5 +62,7 @@ Finally it is very difficult to check for abbreviations, so rule #5 is not enfor
 You can use `// NOPMD` comments and `@SuppressWarnings("PMD")` annotations to suppress false positives.
 I recommend using exact suppressions, e.g. `@SuppressWarnings("PMD.TooManyFields")` to skip issues because other issues at the same line will still be found. Use your good judgement. The goal of this exercise is to follow all nine rules, not to suppress them.
 
+See my blog post about [Object Calisthenics and how to enforce it](http://blog.code-cop.org/2018/01/compliance-with-object-calisthenics.html) for more details.
+
 ### License ###
 This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
