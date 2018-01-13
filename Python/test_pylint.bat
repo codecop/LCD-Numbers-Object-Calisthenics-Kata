@@ -1,1 +1,1 @@
-pylint pylint\samples\sample.py --load-plugins two-instance-variables
+pylint pylint\samples\sample.py --load-plugins two-instance-variables,no-else
