@@ -11,6 +11,35 @@ class FieldsSample(object):
             self._a = self._third_field
 
 
+class BadCollectionSample1(object):
+    def __init__(self):
+        self._a = []
+        self._b = 0
+
+
+class BadCollectionSample2(object):
+    def __init__(self):
+        self._a = [a for a in [1, 2, 3]]
+        self._b = 0
+
+
+class BadCollectionSample3(object):
+    def __init__(self):
+        self._a = list()
+        self._b = 0
+
+
+class BadCollectionSample4(object):
+    def __init__(self):
+        self._a = set()
+        self._b = 0
+
+
+class CollectionSample(object):
+    def __init__(self):
+        self._a = []
+
+
 class IndentationSample(object):
     def __init__(self):
         self._a = 0
@@ -147,5 +176,5 @@ class TooLargeSizeSample(object):
         self._a = 1
         self._a = 1
         self._a = 1
-        # more
+        # one too much
         self._a = 1

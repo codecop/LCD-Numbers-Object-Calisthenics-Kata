@@ -2,27 +2,30 @@ Jeff Bay's Object Calisthenics Rules
 
 1. One level of indentation per method
    * Pylint's "refactoring", max-nested-blocks=1
-     - also catches NoElse.
    * stronger would be Pylint's "design", max-branches=1
    * DONE
 
 2. Don’t use the ELSE keyword
-   * custom "no-else"
+   * custom "no_else"
    * also Pylint's "refactoring", max-nested-blocks=1
    * DONE
 
 3. Wrap all primitives and Strings
 
 4. First class collections
+   * custom "first_class_collections"
+   * TODO only knows [], list(), set() and comprehension, add more types of collections
+   * (kind of) DONE
 
 5. One dot per line
 
 6. Don’t abbreviate
-   * ---
+   * DONE
 
 7. Keep all entities small (no class over 50 lines, no package over 10 files)
    * custom "small_entities"
-   * DONE
+   * TODO max 10 classes per module
+   * (kind of) DONE
 
 8. No classes with more than two instance variables
    * custom "two-instance-variables"
