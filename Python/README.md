@@ -1,4 +1,4 @@
-## LCD Numbers Kata Object Calisthenics with TODO Check ##
+## LCD Numbers Kata Object Calisthenics with Pylint Check ##
 
 This is a template for the [LCD Numbers Kata](http://rubyquiz.com/quiz14.html).
 This is a Python project. Run the script `./run_tests` to run your tests.
@@ -38,7 +38,7 @@ There are sample LCD outputs in the `test/resources` folder.
 
 ### Checking Code for Compliance ###
 
-The project contains [Pylint](https://github.com/PyCQA/pylint) rules to check code for compliance with Object Calisthenics'.
+The project contains [Pylint](https://www.pylint.org/) rules to check code for compliance with Object Calisthenics'.
 To check the setup run `./run_tests` on the sample code. It will run the tests and show two violations:
 
     ************* Module lcd.sample
