@@ -1,3 +1,5 @@
+"""checks for Object Calisthenics rule 8: Only two instance variables."""
+
 # see https://pylint.readthedocs.io/en/latest/how_tos/custom_checkers.html
 import six
 from pylint.checkers import BaseChecker
@@ -6,8 +8,7 @@ from pylint.interfaces import IAstroidChecker
 
 
 class TwoInstanceVariablesChecker(BaseChecker):
-    """checks for Object Calisthenics rule 8: Only two instance variables.
-    """
+    """checks for number of instance variables."""
 
     __implements__ = IAstroidChecker
 
@@ -26,7 +27,7 @@ class TwoInstanceVariablesChecker(BaseChecker):
         """check number of class attributes"""
         attribute_count = 0
 
-        for attr, anodes in six.iteritems(node.instance_attrs):
+        for attr, _ in six.iteritems(node.instance_attrs):
             if not any(node.instance_attr_ancestors(attr)):
                 # print attr, anodes[0]
                 attribute_count += 1
@@ -36,4 +37,5 @@ class TwoInstanceVariablesChecker(BaseChecker):
 
 
 def register(linter):
+    """required method to auto register this checker """
     linter.register_checker(TwoInstanceVariablesChecker(linter))

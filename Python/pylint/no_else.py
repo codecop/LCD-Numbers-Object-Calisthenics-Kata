@@ -1,3 +1,5 @@
+"""checks for Object Calisthenics rule 2: Don't use the ELSE keyword."""
+
 # see https://breadcrumbscollector.tech/writing-custom-checkers-for-pylint/
 # see https://pylint.readthedocs.io/en/latest/how_tos/custom_checkers.html
 from pylint.checkers import BaseChecker
@@ -6,8 +8,7 @@ from pylint.interfaces import IAstroidChecker
 
 
 class NoElseChecker(BaseChecker):
-    """checks for Object Calisthenics rule 2: Don't use the ELSE keyword.
-    """
+    """checks for else keyword."""
 
     __implements__ = IAstroidChecker
 
@@ -29,4 +30,5 @@ class NoElseChecker(BaseChecker):
 
 
 def register(linter):
+    """required method to auto register this checker """
     linter.register_checker(NoElseChecker(linter))

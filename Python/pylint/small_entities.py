@@ -1,11 +1,12 @@
+"""checks for Object Calisthenics rule 7: Small entities."""
+
 from astroid import If
 from pylint.checkers import BaseChecker
 from pylint.interfaces import IAstroidChecker
 
 
 class SmallEntitiesChecker(BaseChecker):
-    """checks for Object Calisthenics rule 7: Small entities
-    """
+    """checks for classes to be smaller than number of statements."""
     # copied from Pylint's MisdesignChecker in design_analysis.py
 
     __implements__ = IAstroidChecker
@@ -22,10 +23,10 @@ class SmallEntitiesChecker(BaseChecker):
 
     def __init__(self, linter=None):
         BaseChecker.__init__(self, linter)
-        self._max_class_statements = 45 # config
+        self._max_class_statements = 45  # lazy config
         self._stmts = 0
 
-    def visit_classdef(self, node):
+    def visit_classdef(self, node):  # pylint: disable=unused-argument
         """reset statements counter"""
         self._stmts = 0
 
@@ -56,7 +57,7 @@ class SmallEntitiesChecker(BaseChecker):
             branches += 1
         self._stmts += branches
 
-    def visit_tryfinally(self, node):
+    def visit_tryfinally(self, node):  # pylint: disable=unused-argument
         """increments the statements counter"""
         self._stmts += 2
 
@@ -71,4 +72,5 @@ class SmallEntitiesChecker(BaseChecker):
 
 
 def register(linter):
+    """required method to auto register this checker """
     linter.register_checker(SmallEntitiesChecker(linter))

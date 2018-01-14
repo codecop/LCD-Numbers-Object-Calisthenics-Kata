@@ -1,3 +1,5 @@
+"""checks for Object Calisthenics rule 4: First class collections."""
+
 import astroid
 import six
 from pylint.checkers import BaseChecker
@@ -6,8 +8,7 @@ from pylint.interfaces import IAstroidChecker
 
 
 class FirstClassCollectionsChecker(BaseChecker):
-    """checks for Object Calisthenics rule 4: First class collections.
-    """
+    """checks for collection attributes to be the only field."""
 
     __implements__ = IAstroidChecker
 
@@ -40,19 +41,20 @@ class FirstClassCollectionsChecker(BaseChecker):
         assigned_values = [list(node.parent.get_children())[1] for node in assign_nodes]
         # print assigned_values
         for value in assigned_values:
-            if type(value) == astroid.node_classes.List:  # []
+            if isinstance(value, astroid.node_classes.List):  # []
                 return True
-            if type(value) == astroid.scoped_nodes.ListComp:
+            if isinstance(value, astroid.scoped_nodes.ListComp):
                 return True
-            if type(value) == astroid.scoped_nodes.SetComp:
+            if isinstance(value, astroid.scoped_nodes.SetComp):
                 return True
-            if type(value) == astroid.node_classes.Call:
+            if isinstance(value, astroid.node_classes.Call):
                 callee = value.func.name
                 if callee == 'list' or callee == 'set':  # list() or # set()
                     return True
-            # print value
+                    # print value
         return False
 
 
 def register(linter):
+    """required method to auto register this checker """
     linter.register_checker(FirstClassCollectionsChecker(linter))
