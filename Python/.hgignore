@@ -21,5 +21,6 @@ dist
 
 # VirtualEnv
 .virtual/
+.virtual3/
 
 test/resources/size_*
