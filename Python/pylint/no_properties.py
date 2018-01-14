@@ -1,5 +1,6 @@
 """checks for Object Calisthenics rule 9: No properties."""
 import six
+from astroid import Decorators, Name, Attribute
 from pylint.checkers import BaseChecker
 from pylint.checkers.utils import check_messages
 from pylint.interfaces import IAstroidChecker
@@ -38,17 +39,32 @@ class NoPropertiesChecker(BaseChecker):
     name = 'no-properties'
     priority = -1
     msgs = {
-        'R1292': ('Class "%s" defines properties',
+        'R1292': ('Declarator defines a property "%s"',
                   'has-properties',
                   'Object Calisthenics Rule 9'),
     }
     options = ()
 
     @check_messages('has-properties')
-    def visit_if(self, node):
-        """check if for else"""
-        if False and node.orelse:
-            self.add_message('has-properties', node=node, args=(node.name,))
+    def visit_functiondef(self, node):
+        """check if for property decorator"""
+        decorators = list(node.get_children())[0]
+
+        if isinstance(decorators, Decorators):
+            if self._contains_property(decorators):
+                self.add_message('has-properties', node=node, args=(node.name,))
+
+    def _contains_property(self, decorators):  # pylint: disable=no-self-use
+        for decorator in decorators.nodes:
+            # print(decorator)
+            if isinstance(decorator, Name):
+                if decorator.name == 'property':
+                    return True
+            if isinstance(decorator, Attribute):
+                if decorator.attrname == 'setter' or decorator.attrname == 'getter':
+                    return True
+
+        return False
 
 
 def register(linter):
