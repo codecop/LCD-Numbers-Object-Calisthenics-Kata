@@ -37,7 +37,7 @@ class FirstClassCollectionsChecker(BaseChecker):
         if has_collection and attribute_count > 1:
             self.add_message('collection-not-first-class', node=node, args=(node.name,))
 
-    def _is_collection(self, assign_nodes):
+    def _is_collection(self, assign_nodes):  # pylint: disable=no-self-use
         assigned_values = [list(node.parent.get_children())[1] for node in assign_nodes]
         # print assigned_values
 
