@@ -43,6 +43,7 @@ class FirstClassCollectionsChecker(BaseChecker):
 
         collection_asts = [astroid.node_classes.List,  # []
                            astroid.node_classes.Tuple,  # ()
+                           astroid.node_classes.Dict,
                            astroid.scoped_nodes.ListComp,
                            astroid.scoped_nodes.SetComp]
 
@@ -57,7 +58,7 @@ class FirstClassCollectionsChecker(BaseChecker):
 
             if isinstance(value, astroid.node_classes.Call):
                 callee = value.func.name
-                if callee == 'list' or callee == 'set':  # list() or # set()
+                if callee == 'list' or callee == 'set' or callee == 'dict':  # list() or # set()
                     return True
 
             # if not isinstance(value, astroid.node_classes.Const):

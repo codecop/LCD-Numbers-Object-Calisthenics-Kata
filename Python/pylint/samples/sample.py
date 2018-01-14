@@ -51,6 +51,12 @@ class BadCollectionSample5(object):
         self._b = 0
 
 
+class BadCollectionSample6(object):
+    def __init__(self):
+        self._a = {'a': 1}
+        self._b = 0
+
+
 class GoodCollectionSample(object):
     def __init__(self):
         self._a = []
