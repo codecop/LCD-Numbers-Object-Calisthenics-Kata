@@ -1,13 +1,17 @@
-# see https://breadcrumbscollector.tech/writing-custom-checkers-for-pylint/
 # see https://pylint.readthedocs.io/en/latest/how_tos/custom_checkers.html
 import six
 from pylint.checkers import BaseChecker
+from pylint.checkers.utils import check_messages
 from pylint.interfaces import IAstroidChecker
 
 
 class TwoInstanceVariablesChecker(BaseChecker):
+    """checks for Object Calisthenics rule 8: Only two instance variables.
+    """
+
     __implements__ = IAstroidChecker
 
+    # configuration section name
     name = 'two-instance-variables'
     priority = -1
     msgs = {
@@ -17,7 +21,9 @@ class TwoInstanceVariablesChecker(BaseChecker):
     }
     options = ()
 
+    @check_messages('more-than-two-instance-variables')
     def visit_classdef(self, node):
+        """check number of class attributes"""
         attribute_count = 0
 
         for attr, anodes in six.iteritems(node.instance_attrs):
