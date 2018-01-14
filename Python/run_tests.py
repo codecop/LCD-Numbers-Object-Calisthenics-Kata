@@ -1,8 +1,9 @@
+#! python
+import unittest
+
 import fnmatch
 import os
 import os.path
-import sys
-import unittest
 
 
 # Find all unit tests `test/*Test.py` and execute them.
