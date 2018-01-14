@@ -1,8 +1,7 @@
 ## LCD Numbers Kata Object Calisthenics with TODO Check ##
 
 This is a template for the [LCD Numbers Kata](http://rubyquiz.com/quiz14.html).
-This is a Python project. Run `TODO` to
-run your tests.
+This is a Python project. Run `run_tests` to run your tests.
 
 ## Requirements (copied from Ruby Quiz) ##
 
@@ -21,7 +20,7 @@ Each digit is shown below:
 The bar size should be adjustable. The default value is 2 - as shown above.
 Read more about it at [RubyQuiz](http://rubyquiz.com/quiz14.html).
 
-There are sample LCD outputs in the `src/test/resources` folder.
+There are sample LCD outputs in the `test/resources` folder.
 
 ## Constraints ##
 
@@ -39,16 +38,15 @@ There are sample LCD outputs in the `src/test/resources` folder.
 
 ### Checking Code for Compliance ###
 
-The [Code Cop Custom PMD Rules](https://bitbucket.org/pkofler/pmd-rules) contain PMD rules to check code for compliance with Object Calisthenics'.
-This project is set up to check the code using the Maven PMD Plugin on each `mvnw test`.
+The project contains [Pylint](https://github.com/PyCQA/pylint) rules to check code for compliance with Object Calisthenics'.
 
-To check the setup run `mvnw test` on the sample code. It will show two violations:
+To check the setup run `run_tests` on the sample code. It will show two violations:
 
-    [INFO] PMD Failure: SampleClass.java:2 Rule:TooManyFields Priority:3 Too many fields.
-    [INFO] PMD Failure: SampleClass:9 Rule:NoElseKeyword Priority:3 No else keyword.
+    ************* Module lcd.sample
+    R:  1, 0: More than two instance variables in class "Sample" (more-than-two-instance-variables)
+    R:  8, 8: Don't use the ELSE keyword (if-has-else)
 
-You can also check the rules on their own with `mvnw pmd:check`.
-By using the [Maven Shell](https://github.com/jdillon/mvnsh) the time to run the check can be reduced by 50%.
+You can also check the rules on their own with `run_pylint`.
 
 ### Limitations of Checking Code ###
 Obviously code analysis cannot find everything.
@@ -58,8 +56,8 @@ Rule #4 (One Dot Per Line) is checked using PMD's own `LawOfDemeter`, which chec
 So sometimes a single dot in a line will already violate the LoD.
 Finally it is very difficult to check for abbreviations, so rule #5 is not enforced.
 
-You can use `// NOPMD` comments and `@SuppressWarnings("PMD")` annotations to suppress false positives.
-I recommend using exact suppressions, e.g. `@SuppressWarnings("PMD.TooManyFields")` to skip issues because other issues at the same line will still be found. Use your good judgement. The goal of this exercise is to follow all nine rules, not to suppress them.
+You can use `# pylint: disable=<rule name>` comments to suppress false positives.
+I recommend using this rarely. Use your good judgement. The goal of this exercise is to follow all nine rules, not to suppress them.
 
 ### License ###
 This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.

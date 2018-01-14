@@ -1,6 +1,11 @@
 class Sample(object):
-    def three_fields(self):
-        self.third_field = 0
-        self.b = self.third_field
-        if self.a == self.b:
-            self.a = self.third_field
+    def __init__(self):
+        self._a = 0
+        self._b = 0
+        self._third_field = 0  # ! third field
+
+    def with_else(self):
+        if self._a == self._b:
+            self._a = self._third_field
+        else:  # ! else
+            self._b = self._third_field
