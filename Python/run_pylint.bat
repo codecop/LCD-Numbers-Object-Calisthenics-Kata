@@ -1,4 +1,4 @@
-@setlocal
+@if "%OS%"=="Windows_NT" @setlocal
 @set PYTHONPATH=pylint;%PYTHONPATH%
 call pylint --rcfile objectcalisthenics.pylintrc lcd
-@endlocal
+@if "%OS%"=="Windows_NT" @endlocal
