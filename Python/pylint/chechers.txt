@@ -8,6 +8,7 @@ Jeff Bay's Object Calisthenics Rules
 
 2. Don’t use the ELSE keyword
    * custom "no-else"
+   * also Pylint's "refactoring", max-nested-blocks=1
    * DONE
 
 3. Wrap all primitives and Strings
@@ -20,9 +21,12 @@ Jeff Bay's Object Calisthenics Rules
    * ---
 
 7. Keep all entities small (no class over 50 lines, no package over 10 files)
+   * custom "small_entities"
+   * DONE
 
 8. No classes with more than two instance variables
    * custom "two-instance-variables"
+   * also Pylint's "design", max-attributes=2
    * DONE
 
 9. No getters/setters/properties

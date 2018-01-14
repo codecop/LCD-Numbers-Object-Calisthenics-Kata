@@ -49,51 +49,51 @@ class JustOkSizeSample(object):
     def __init__(self):
         self._a = 0
 
-    def long_method(self):
+    def method1(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
 
     def method2(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+
+    def method4(self):
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+
+    def method5(self):
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
         self._a = 1
 
 
@@ -101,665 +101,51 @@ class TooLargeSizeSample(object):
     def __init__(self):
         self._a = 0
 
-    def long_method(self):
+    def method1(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
 
     def method2(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:  # this is too long
-            self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
+        self._a = 1
 
-    def long_method3(self):
+    def method4(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
+
+    def method5(self):
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
         self._a = 1
-        if self._a > 1:
-            self._a = 1
+        # more
         self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
-        self._a = 1
-        if self._a > 1:
-            self._a = 1
