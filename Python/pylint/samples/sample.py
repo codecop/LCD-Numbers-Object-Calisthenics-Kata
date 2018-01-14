@@ -194,3 +194,34 @@ class TooLargeSizeSample(object):
         self._a = 1
         # one too much
         self._a = 1
+
+
+class BadProperties1(object):
+    def __init__(self):
+        self._temperature = 0
+        self.public_property = 0
+
+    def get_temperature(self):
+        return self._temperature
+
+    def set_temperature(self, value):
+        if value < -273:
+            raise ValueError("Temperature below -273 is not possible")
+        self._temperature = value
+
+    temperature = property(get_temperature, set_temperature)
+
+
+class BadProperties2(object):
+    def __init__(self):
+        self._temperature = 0
+
+    @property
+    def temperature(self):
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        if value < -273:
+            raise ValueError("Temperature below -273 is not possible")
+        self._temperature = value

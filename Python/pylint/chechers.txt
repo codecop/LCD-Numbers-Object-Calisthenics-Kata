@@ -33,3 +33,6 @@ Jeff Bay's Object Calisthenics Rules
    * DONE
 
 9. No getters/setters/properties
+   * TODO all fields must be private
+   * TODO do not use property decorator
+   * TODO do not use manual getters/setters

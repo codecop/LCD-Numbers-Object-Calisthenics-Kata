@@ -5,7 +5,7 @@ jobs=4
 
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=two_instance_variables,no_else,small_entities,first_class_collections
+load-plugins=two_instance_variables,no_else,small_entities,first_class_collections,no_properties
 
 
 [MESSAGES CONTROL]
