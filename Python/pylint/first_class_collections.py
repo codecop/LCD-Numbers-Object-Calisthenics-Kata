@@ -40,18 +40,29 @@ class FirstClassCollectionsChecker(BaseChecker):
     def _is_collection(self, assign_nodes):
         assigned_values = [list(node.parent.get_children())[1] for node in assign_nodes]
         # print assigned_values
+
+        collection_asts = [astroid.node_classes.List,  # []
+                           astroid.node_classes.Tuple,  # ()
+                           astroid.scoped_nodes.ListComp,
+                           astroid.scoped_nodes.SetComp]
+
         for value in assigned_values:
-            if isinstance(value, astroid.node_classes.List):  # []
-                return True
-            if isinstance(value, astroid.scoped_nodes.ListComp):
-                return True
-            if isinstance(value, astroid.scoped_nodes.SetComp):
-                return True
+            if isinstance(value, astroid.node_classes.Const):
+                # short circuit most values
+                continue
+
+            for collection_ast in collection_asts:
+                if isinstance(value, collection_ast):
+                    return True
+
             if isinstance(value, astroid.node_classes.Call):
                 callee = value.func.name
                 if callee == 'list' or callee == 'set':  # list() or # set()
                     return True
-                    # print value
+
+            # if not isinstance(value, astroid.node_classes.Const):
+            #     print('unknown assignment value type ', value)
+
         return False
 
 

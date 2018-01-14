@@ -1,4 +1,14 @@
-class FieldsSample(object):
+class GoodFieldsSample(object):
+    def __init__(self):
+        self._a = 0
+        self._b = 0
+
+    def three_fields(self):
+        if self._a == self._b:
+            self._a = 0
+
+
+class BadFieldsSample(object):
     def __init__(self):
         self._a = 0
         self._b = 0
@@ -35,12 +45,18 @@ class BadCollectionSample4(object):
         self._b = 0
 
 
-class CollectionSample(object):
+class BadCollectionSample5(object):
+    def __init__(self):
+        self._a = (1, 'a')
+        self._b = 0
+
+
+class GoodCollectionSample(object):
     def __init__(self):
         self._a = []
 
 
-class IndentationSample(object):
+class BadIndentationSample(object):
     def __init__(self):
         self._a = 0
 
@@ -49,13 +65,13 @@ class IndentationSample(object):
         if self._a > 1:
             self._a = 1
 
-    def two_levels_of_indent1(self):
+    def two_levels_of_indent_if(self):
         self._a = 1
         if self._a > 1:
             if self._a > 2:
                 self._a = 1
 
-    def two_levels_of_indent2(self):
+    def two_levels_of_indent_for(self):
         self._a = 1
         for i in [1, 2]:
             if self._a > i:

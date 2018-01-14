@@ -2,7 +2,7 @@ Jeff Bay's Object Calisthenics Rules
 
 1. One level of indentation per method
    * Pylint's "refactoring", max-nested-blocks=1
-   * stronger would be Pylint's "design", max-branches=1
+   * stronger also Pylint's "design", max-branches=1
    * DONE
 
 2. Don’t use the ELSE keyword
@@ -14,7 +14,7 @@ Jeff Bay's Object Calisthenics Rules
 
 4. First class collections
    * custom "first_class_collections"
-   * TODO only knows [], list(), set() and comprehension, add more types of collections
+   * TODO only knows [], (), list(), set() and comprehensions, add more types of collections
    * (kind of) DONE
 
 5. One dot per line
