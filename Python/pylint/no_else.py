@@ -15,7 +15,7 @@ class NoElseChecker(BaseChecker):
     name = 'no-else'
     priority = -1
     msgs = {
-        'R1202': ('Don\'t use the ELSE keyword',
+        'R1221': ('Don\'t use the ELSE keyword',
                   'if-has-else',
                   'Object Calisthenics Rule 2'),
     }

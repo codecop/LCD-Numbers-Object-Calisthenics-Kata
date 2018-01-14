@@ -14,7 +14,7 @@ class SmallEntitiesChecker(BaseChecker):
     name = 'small-entities'
     priority = -1
     msgs = {
-        'R1207': ('Large entity "%s" (%s/%s statements)',
+        'R1271': ('Large entity "%s" (%s/%s statements)',
                   'large-entity',
                   'Object Calisthenics Rule 7'),
     }
