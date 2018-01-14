@@ -1,0 +1,28 @@
+[MASTER]
+
+# Use multiple processes to speed up Pylint.
+jobs=4
+
+# List of plugins (as comma separated values of python modules names) to load,
+# usually to register additional checkers.
+load-plugins=two-instance-variables,no-else
+
+
+[MESSAGES CONTROL]
+
+disable=missing-docstring,
+        too-few-public-methods
+
+
+[REFACTORING]
+
+# Maximum number of nested blocks for function / method body
+max-nested-blocks=1
+
+
+[DESIGN]
+
+# Maximum number of branch for function / method body
+max-branches=1
+
+

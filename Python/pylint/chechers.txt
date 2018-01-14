@@ -1,0 +1,28 @@
+Jeff Bay's Object Calisthenics Rules
+
+1. One level of indentation per method
+   * Pylint's "refactoring", max-nested-blocks=1
+     - also catches NoElse.
+   * stronger would be Pylint's "design", max-branches=1
+   * DONE
+
+2. Don’t use the ELSE keyword
+   * custom "no-else"
+   * DONE
+
+3. Wrap all primitives and Strings
+
+4. First class collections
+
+5. One dot per line
+
+6. Don’t abbreviate
+   * ---
+
+7. Keep all entities small (no class over 50 lines, no package over 10 files)
+
+8. No classes with more than two instance variables
+   * custom "two-instance-variables"
+   * DONE
+
+9. No getters/setters/properties

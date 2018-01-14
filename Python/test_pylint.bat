@@ -1,4 +1,5 @@
 @setlocal
 @set PYTHONPATH=pylint;%PYTHONPATH%
-call pylint pylint\samples\sample.py --load-plugins two-instance-variables,no-else
+call pylint --rcfile objectcalisthenics.pylintrc pylint\samples\sample.py
+@rem ---jobs 4 --load-plugins two-instance-variables,no-else
 @endlocal

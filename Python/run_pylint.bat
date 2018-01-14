@@ -1,4 +1,4 @@
 @setlocal
 @set PYTHONPATH=pylint;%PYTHONPATH%
-call pylint lcd --load-plugins NoElse
+call pylint --rcfile objectcalisthenics.pylintrc lcd
 @endlocal
