@@ -14,5 +14,3 @@ syntax: glob
 
 # Maven
 target
-
-src/test/resources/size_*
