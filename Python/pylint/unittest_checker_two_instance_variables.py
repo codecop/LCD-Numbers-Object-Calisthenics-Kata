@@ -41,10 +41,7 @@ class TestTwoInstanceVariablesChecker(CheckerTestCase):
                     self._a = self._third_field
         """)
 
-        def first(n, i=0):
-            return list(n.get_children())[i]
-
-        class_def = first(node)
+        class_def = list(node.get_children())[0]
 
         with self.assertAddsMessages(
                 Message('more-than-two-instance-variables', node=class_def, args=('BadFieldsSample',), )):
