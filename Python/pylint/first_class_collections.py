@@ -57,9 +57,11 @@ class FirstClassCollectionsChecker(BaseChecker):
                     return True
 
             if isinstance(value, astroid.node_classes.Call):
-                callee = value.func.name
-                if callee == 'list' or callee == 'set' or callee == 'dict':  # list() or # set()
-                    return True
+                target = value.func
+                if isinstance(target, astroid.node_classes.Name):
+                    callee = target.name
+                    if callee == 'list' or callee == 'set' or callee == 'dict':  # list() or # set()
+                        return True
 
             # if not isinstance(value, astroid.node_classes.Const):
             #     print('unknown assignment value type ', value)

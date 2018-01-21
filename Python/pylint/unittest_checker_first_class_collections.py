@@ -17,6 +17,20 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
         with self.assertNoMessages():
             self.walk(node.root())
 
+    def test_allow_single_collection_initialisation(self):
+        """Bug during workshop"""
+        node = astroid.parse("""
+        class GoodCollectionSample(object):
+            def __init__(self):
+                self._a = self._init()
+
+            def _init(self):
+                return []
+        """)
+
+        with self.assertNoMessages():
+            self.walk(node.root())
+
     def test_find_array(self):
         node = astroid.parse("""
         class BadCollectionSample1(object):
