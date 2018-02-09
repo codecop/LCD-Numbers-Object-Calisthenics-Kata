@@ -1,4 +1,5 @@
-"""Unit tests for the first class collections."""
+"""Unit tests for Object Calisthenics rule 4: First class collections."""
+
 import astroid
 from pylint.testutils import CheckerTestCase, Message
 from first_class_collections import FirstClassCollectionsChecker
@@ -8,7 +9,7 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
     """Unit tests for the first class collections."""
     CHECKER_CLASS = FirstClassCollectionsChecker
 
-    def test_allow_single_collection(self):
+    def test_single_array(self):
         node = astroid.parse("""
         class GoodCollectionSample(object):
             def __init__(self):
@@ -21,7 +22,7 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
     def test_collection_initialisation(self):
         """Bug during workshop"""
         node = astroid.parse("""
-        class GoodCollectionSample(object):
+        class Foo(object):
             def __init__(self):
                 self._a = self._init()
 
@@ -34,7 +35,7 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
     def test_find_array(self):
         node = astroid.parse("""
-        class BadCollectionSample1(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = []
                 self._b = 0
@@ -44,12 +45,12 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample1',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())
 
     def test_find_list_comprehension(self):
         node = astroid.parse("""
-        class BadCollectionSample2(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = [a for a in [1, 2, 3]]
                 self._b = 0
@@ -59,12 +60,12 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample2',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())
 
     def test_find_list(self):
         node = astroid.parse("""
-        class BadCollectionSample3(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = list()
                 self._b = 0
@@ -74,12 +75,12 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample3',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())
 
     def test_find_set(self):
         node = astroid.parse("""
-        class BadCollectionSample4(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = set()
                 self._b = 0
@@ -89,12 +90,12 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample4',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())
 
     def test_find_tuple(self):
         node = astroid.parse("""
-        class BadCollectionSample5(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = (1, 'a')
                 self._b = 0
@@ -104,12 +105,12 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample5',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())
 
     def test_find_hash(self):
         node = astroid.parse("""
-        class BadCollectionSample6(object):
+        class BadCollectionSample(object):
             def __init__(self):
                 self._a = {'a': 1}
                 self._b = 0
@@ -119,5 +120,5 @@ class TestFirstClassCollectionsChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('collection-not-first-class', node=class_def,
-                    args=('BadCollectionSample6',), )):
+                    args=('BadCollectionSample',), )):
             self.walk(node.root())

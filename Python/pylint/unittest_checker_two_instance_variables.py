@@ -1,4 +1,5 @@
-"""Unit tests for the two instance variables checker."""
+"""Unit tests for Object Calisthenics rule 8: Only two instance variables."""
+
 import astroid
 from pylint.testutils import CheckerTestCase, Message
 from two_instance_variables import TwoInstanceVariablesChecker
@@ -17,7 +18,7 @@ class TestTwoInstanceVariablesChecker(CheckerTestCase):
                 self._a = 0
                 self._b = 0
 
-            def three_fields(self):
+            def method(self):
                 if self._a == self._b:
                     self._a = 0
         """)

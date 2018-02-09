@@ -1,4 +1,5 @@
-"""Unit tests for the no-else checker."""
+"""Unit tests for Object Calisthenics rule 2: Don't use the ELSE keyword."""
+
 import astroid
 from pylint.testutils import CheckerTestCase, Message
 from no_else import NoElseChecker
@@ -20,14 +21,11 @@ class TestNoElseChecker(CheckerTestCase):
                 self._a = 1
                 if self._a > 1:
                     self._a = 1
-                if self._a > 1:
-                    self._a = 1
         """)
 
         with self.assertNoMessages():
             self.walk(node.root())
 
-    # @set_config(exclude_protected=('_meta', '_manager'))
     def test_find_else(self):
         """Test that else keyword is flagged."""
 
