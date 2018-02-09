@@ -13,113 +13,32 @@ class TestSmallEntitiesChecker(CheckerTestCase):
         node = astroid.parse("""
         class JustOkSizeSample(object):
             def __init__(self):
-                self._a = 0
+        """ + self.statements(1) + # 2
+        """
 
-            def method1(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method2(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method4(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method5(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-        """)
+            def method1(self):  # 3
+        """ + self.statements(42)  # = 45
+        )
 
         with self.assertNoMessages():
             self.walk(node.root())
+
+    def statements(self, num):
+        return """
+                self._a = 1
+        """ * num
 
     def test_too_long(self):
         node = astroid.parse("""
         class Large(object):
             def __init__(self):
-                self._a = 0
+        """ + self.statements(1) + # 2
+        """
 
-            def method1(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method2(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method4(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-
-            def method5(self):
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                self._a = 1
-                # one too much
-                self._a = 1
+            def method1(self):  # 3
+        """ + self.statements(42) + # = 45
+        """
+                self._a = 1 # one too much
         """)
 
         class_def = list(node.get_children())[0]
