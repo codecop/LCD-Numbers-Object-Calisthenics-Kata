@@ -3,9 +3,13 @@
 # Use multiple processes to speed up Pylint.
 jobs=4
 
+# 2. Don’t use the ELSE keyword
+# 4. First class collections
+# 7. Keep all entities small
+# 9. No getters/setters/properties
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=two_instance_variables,no_else,small_entities,first_class_collections,no_properties
+load-plugins=no_else,first_class_collections,two_instance_variables,small_entities,no_properties
 
 
 [MESSAGES CONTROL]
@@ -16,14 +20,17 @@ disable=missing-docstring,
 
 [REFACTORING]
 
+# 1. One level of indentation per method
 # Maximum number of nested blocks for function / method body
 max-nested-blocks=1
 
 
 [DESIGN]
 
+# 1. One level of indentation per method (stronger)
 # Maximum number of branch for function / method body
-max-branches=1
+# max-branches=1
 
+# 8. No classes with more than two instance variables
 # Maximum number of attributes for a class (see R0902).
 max-attributes=2
