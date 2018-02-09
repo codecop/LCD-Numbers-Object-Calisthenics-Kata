@@ -13,17 +13,15 @@ class TestSmallEntitiesChecker(CheckerTestCase):
         node = astroid.parse("""
         class JustOkSizeSample(object):
             def __init__(self):
-        """ + self.statements(1) + # 2
-        """
+        """ + self.statements(1) + """ # 2.
 
-            def method1(self):  # 3
-        """ + self.statements(42)  # = 45
-        )
+            def method(self):  # 3.
+        """ + self.statements(45 - 3))
 
         with self.assertNoMessages():
             self.walk(node.root())
 
-    def statements(self, num):
+    def statements(self, num):  # pylint: disable=no-self-use
         return """
                 self._a = 1
         """ * num
@@ -32,12 +30,10 @@ class TestSmallEntitiesChecker(CheckerTestCase):
         node = astroid.parse("""
         class Large(object):
             def __init__(self):
-        """ + self.statements(1) + # 2
-        """
+        """ + self.statements(1) + """ # 2.
 
-            def method1(self):  # 3
-        """ + self.statements(42) + # = 45
-        """
+            def method(self):  # 3.
+        """ + self.statements(45 - 3) + """
                 self._a = 1 # one too much
         """)
 

@@ -99,4 +99,3 @@ class TestNoPropertiesChecker(CheckerTestCase):
         with self.assertAddsMessages(
             Message('has-properties', node=class_def, args=('temperature',), )):
             self.walk(node.root())
-
