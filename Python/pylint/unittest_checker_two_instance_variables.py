@@ -1,3 +1,4 @@
+"""Unit tests for the two instance variables checker."""
 import astroid
 from pylint.testutils import CheckerTestCase, Message
 from two_instance_variables import TwoInstanceVariablesChecker
@@ -44,5 +45,6 @@ class TestTwoInstanceVariablesChecker(CheckerTestCase):
         class_def = list(node.get_children())[0]
 
         with self.assertAddsMessages(
-                Message('more-than-two-instance-variables', node=class_def, args=('BadFieldsSample',), )):
+            Message('more-than-two-instance-variables', node=class_def,
+                    args=('BadFieldsSample',), )):
             self.walk(node.root())

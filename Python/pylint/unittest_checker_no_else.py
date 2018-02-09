@@ -1,6 +1,7 @@
+"""Unit tests for the no-else checker."""
 import astroid
-from no_else import NoElseChecker
 from pylint.testutils import CheckerTestCase, Message
+from no_else import NoElseChecker
 
 
 class TestNoElseChecker(CheckerTestCase):
@@ -43,8 +44,9 @@ class TestNoElseChecker(CheckerTestCase):
                     self._a = 2
         """)
 
-        def first(n, i=0):
-            return list(n.get_children())[i]
+        def first(node, i=0):
+            """Return first/i-th child of children nodes."""
+            return list(node.get_children())[i]
 
         class_def = first(node)
         fun_def = class_def.body[1]
