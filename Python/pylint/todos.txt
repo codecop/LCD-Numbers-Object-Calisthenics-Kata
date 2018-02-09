@@ -1,2 +1,1 @@
-* pylint the checkers themselves
 * test also with python 3 in .virtual3
