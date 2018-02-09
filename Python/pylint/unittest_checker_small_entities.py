@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from small_entities import SmallEntitiesChecker
+from small_entities import SmallEntitiesChecker, SmallModulesChecker
 
 
 class TestSmallEntitiesChecker(CheckerTestCase):
@@ -41,4 +41,66 @@ class TestSmallEntitiesChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('large-entity', node=class_def, args=('Large', 46, 45), )):
+            self.walk(node.root())
+
+
+class TestSmallModulesChecker(CheckerTestCase):
+    """Unit tests for the small modules checker."""
+    CHECKER_CLASS = SmallModulesChecker
+
+    def test_few_classes(self):
+        node = astroid.parse("""
+        class A:
+            pass
+
+        class B:
+            pass
+
+        class C:
+            pass
+        """)
+
+        with self.assertNoMessages():
+            self.walk(node.root())
+
+    def test_too_many_classes(self):
+        node = astroid.parse("""
+        class A:
+            pass
+
+        class B:
+            pass
+
+        class C:
+            pass
+
+        class D:
+            pass
+
+        class E:
+            pass
+
+        class F:
+            pass
+
+        class G:
+            pass
+
+        class H:
+            pass
+
+        class I:
+            pass
+
+        class J:
+            pass
+
+        class K:  # too many
+            pass
+        """)
+
+        module_def = node
+
+        with self.assertAddsMessages(
+            Message('large-module', node=module_def, args=('', 11, 10), )):
             self.walk(node.root())

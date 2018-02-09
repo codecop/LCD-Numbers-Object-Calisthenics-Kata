@@ -14,17 +14,19 @@ Jeff Bay's Object Calisthenics Rules
 
 4. First class collections
    * custom "first_class_collections"
-   * TODO only knows [], (), list(), set() and comprehensions, add more types of collections
+   * currently knows [], (), list(), set() and comprehensions, add more types of collections
    * (kind of) DONE
 
 5. One dot per line
 
 6. Don’t abbreviate
-   * DONE
+   * TODO short names
+   * good-names=reset
 
 7. Keep all entities small (no class over 50 lines, no package over 10 files)
-   * custom "small_entities"
-   * TODO max 10 classes per module
+   * custom "small_entities", counts statements
+   * max 10 classes per module
+   * TODO max 10 toplevel things in module
    * (kind of) DONE
 
 8. No classes with more than two instance variables
@@ -33,7 +35,7 @@ Jeff Bay's Object Calisthenics Rules
    * DONE
 
 9. No getters/setters/properties
-   * all fields must be private -- DONE
-   * do not use property decorator -- DONE
+   * all fields must be private
+   * do not use property decorator
    * TODO property constructor/class method
    * TODO do not use manual getters/setters
