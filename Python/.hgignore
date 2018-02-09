@@ -18,7 +18,10 @@ syntax: glob
 *.egg
 build
 dist
+clean.bat
 
 # VirtualEnv
 .virtual/
+env2.bat
 .virtual3/
+env3.bat
