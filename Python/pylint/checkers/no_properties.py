@@ -88,6 +88,7 @@ class NoPropertiesChecker(BaseChecker):
         """remember being outside class"""
         self._in_class = False
 
+    @check_messages('has-properties')
     def visit_call(self, node):
         """check for call to property method in class scope"""
         if not self._in_class or self._in_function:
