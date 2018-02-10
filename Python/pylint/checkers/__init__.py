@@ -19,6 +19,7 @@ import checkers.first_class_collections
 # * (kind of) DONE
 
 # 5. One dot per line
+import checkers.one_dot_per_line
 
 # 6. Don't abbreviate
 # TODO short names
@@ -37,3 +38,4 @@ import checkers.two_instance_variables
 # 9. No getters/setters/properties
 import checkers.no_properties
 # TODO do not use manual getters/setters
+# * (kind of) DONE

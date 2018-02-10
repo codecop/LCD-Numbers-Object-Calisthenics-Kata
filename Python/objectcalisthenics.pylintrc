@@ -9,7 +9,7 @@ jobs=4
 # 9. No getters/setters/properties
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=no_else,first_class_collections,two_instance_variables,small_entities,no_properties
+load-plugins=no_else,first_class_collections,one_dot_per_line,two_instance_variables,small_entities,no_properties
 
 
 [MESSAGES CONTROL]
