@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from small_entities import SmallEntitiesChecker, SmallModulesChecker
+from checkers.small_entities import SmallEntitiesChecker, SmallModulesChecker
 
 
 class TestSmallEntitiesChecker(CheckerTestCase):

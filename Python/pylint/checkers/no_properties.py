@@ -7,7 +7,7 @@ from pylint.interfaces import IAstroidChecker
 
 
 class NoPublicAttributesChecker(BaseChecker):
-    """checks for public attributes."""
+    """checks for public attributes - all fields must be private."""
 
     __implements__ = IAstroidChecker
 
@@ -31,7 +31,7 @@ class NoPublicAttributesChecker(BaseChecker):
 
 
 class NoPropertiesChecker(BaseChecker):
-    """checks for properties."""
+    """checks for properties - do not use property decorator."""
 
     __implements__ = IAstroidChecker
 

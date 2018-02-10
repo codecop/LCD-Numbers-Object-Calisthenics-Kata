@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from no_properties import NoPropertiesChecker, NoPublicAttributesChecker
+from checkers.no_properties import NoPropertiesChecker, NoPublicAttributesChecker
 
 
 class TestNoPublicAttributesChecker(CheckerTestCase):

@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from first_class_collections import FirstClassCollectionsChecker
+from checkers.first_class_collections import FirstClassCollectionsChecker
 
 
 class TestFirstClassCollectionsChecker(CheckerTestCase):

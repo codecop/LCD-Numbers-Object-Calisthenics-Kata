@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from no_else import NoElseChecker
+from checkers.no_else import NoElseChecker
 
 
 class TestNoElseChecker(CheckerTestCase):

@@ -2,7 +2,7 @@
 
 import astroid
 from pylint.testutils import CheckerTestCase, Message
-from two_instance_variables import TwoInstanceVariablesChecker
+from checkers.two_instance_variables import TwoInstanceVariablesChecker
 
 
 class TestTwoInstanceVariablesChecker(CheckerTestCase):
