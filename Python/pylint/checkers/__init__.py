@@ -25,7 +25,6 @@ import checkers.first_class_collections
 
 # 7. Keep all entities small (no class over 50 lines, no package over 10 files)
 import checkers.small_entities
-# TODO max 10 toplevel things in module
 # * (kind of) DONE
 
 # 8. No classes with more than two instance variables

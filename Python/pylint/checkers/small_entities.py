@@ -6,7 +6,7 @@ from pylint.interfaces import IAstroidChecker
 
 
 class SmallEntitiesChecker(BaseChecker):
-    """checks for classes to be smaller than number of statements."""
+    """checks for classes and modules to be smaller than number of statements."""
     # copied from Pylint's MisdesignChecker in design_analysis.py
 
     __implements__ = IAstroidChecker
@@ -18,48 +18,63 @@ class SmallEntitiesChecker(BaseChecker):
         'R1271': ('Large entity "%s" (%s/%s statements)',
                   'large-entity',
                   'Object Calisthenics Rule 7'),
+        'R1272': ('Large module "%s" (%s/%s statements)',
+                  'large-module',
+                  'Object Calisthenics Rule 7'),
     }
     options = ()
 
     def __init__(self, linter=None):
         BaseChecker.__init__(self, linter)
         self._max_class_statements = 45  # TODO lazy config
-        self._statements = 0
+        self._module_statements = 0
+        self._class_statements = 0
+
+    def visit_module(self, node):  # pylint: disable=unused-argument
+        """reset module statements counter"""
+        self._module_statements = 0
+
+    def leave_module(self, node):
+        """check number of module statements"""
+        if self._module_statements > self._max_class_statements:
+            self.add_message('large-module', node=node,
+                             args=(node.name, self._module_statements, self._max_class_statements))
 
     def visit_classdef(self, node):  # pylint: disable=unused-argument
-        """reset statements counter"""
-        self._statements = 0
+        """reset class statements counter"""
+        self._class_statements = 0
 
     # @check_messages('large-entity')
     def leave_classdef(self, node):
-        """check number of overall statements"""
+        """check number of class statements"""
+
+        # do not count class stuff inside module
+        self._module_statements -= self._class_statements
 
         # stop here for exception, metaclass and interface classes
         if node.type != 'class':
             return
 
         # check number of statements
-        if self._statements > self._max_class_statements:
+        if self._class_statements > self._max_class_statements:
             self.add_message('large-entity', node=node,
-                             args=(node.name, self._statements, self._max_class_statements))
+                             args=(node.name, self._class_statements, self._max_class_statements))
 
     def visit_default(self, node):
-        """default visit method increments the statements counter if
-        necessary
-        """
+        """default visit method increments the statements counter"""
         if node.is_statement:
-            self._statements += 1
+            self._inc(1)
 
     def visit_tryexcept(self, node):
         """increments the statements counter for each branch"""
         branches = len(node.handlers)
         if node.orelse:
             branches += 1
-        self._statements += branches
+        self._inc(branches)
 
     def visit_tryfinally(self, node):  # pylint: disable=unused-argument
         """increments the statements counter"""
-        self._statements += 2
+        self._inc(2)
 
     def visit_if(self, node):
         """increments the statements counter for each branch"""
@@ -68,11 +83,15 @@ class SmallEntitiesChecker(BaseChecker):
         if node.orelse and (len(node.orelse) > 1 or
                             not isinstance(node.orelse[0], If)):
             branches += 1
-        self._statements += branches
+        self._inc(branches)
+
+    def _inc(self, branches):
+        self._class_statements += branches
+        self._module_statements += branches
 
 
 class SmallModulesChecker(BaseChecker):
-    """checks for modules with less than number of classes."""
+    """checks for modules to have less than number of classes."""
 
     __implements__ = IAstroidChecker
 
@@ -80,8 +99,8 @@ class SmallModulesChecker(BaseChecker):
     name = 'small-modules'
     priority = -1
     msgs = {
-        'R1272': ('Large module "%s" (%s/%s classes)',
-                  'large-module',
+        'R1273': ('Too many classes in module "%s" (%s/%s classes)',
+                  'too-many-classes',
                   'Object Calisthenics Rule 7'),
     }
     options = ()
@@ -100,7 +119,7 @@ class SmallModulesChecker(BaseChecker):
 
         # check number of statements
         if self._classes > self._max_classes:
-            self.add_message('large-module', node=node,
+            self.add_message('too-many-classes', node=node,
                              args=(node.name, self._classes, self._max_classes))
 
     def visit_classdef(self, node):  # pylint: disable=unused-argument

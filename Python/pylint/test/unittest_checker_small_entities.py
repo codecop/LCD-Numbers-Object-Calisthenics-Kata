@@ -9,38 +9,90 @@ class TestSmallEntitiesChecker(CheckerTestCase):
     """Unit tests for the small entities checker."""
     CHECKER_CLASS = SmallEntitiesChecker
 
-    def test_short_enough(self):
+    def test_class_short_enough(self):
         node = astroid.parse("""
         class JustOkSizeSample(object):
             def __init__(self):
-        """ + self.statements(1) + """ # 2.
+        """ + self._class_statements(1) + """ # 2.
 
             def method(self):  # 3.
-        """ + self.statements(45 - 3))
+        """ + self._class_statements(45 - 3))
 
         with self.assertNoMessages():
             self.walk(node.root())
 
-    def statements(self, num):  # pylint: disable=no-self-use
+    def _class_statements(self, num):  # pylint: disable=no-self-use
         return """
                 self._a = 1
         """ * num
 
-    def test_too_long(self):
+    def test_class_too_long(self):
         node = astroid.parse("""
         class Large(object):
             def __init__(self):
-        """ + self.statements(1) + """ # 2.
+        """ + self._class_statements(1) + """ # 2.
 
             def method(self):  # 3.
-        """ + self.statements(45 - 3) + """
+        """ + self._class_statements(45 - 3) + """
                 self._a = 1 # one too much
         """)
 
         class_def = list(node.get_children())[0]
 
-        with self.assertAddsMessages(
-            Message('large-entity', node=class_def, args=('Large', 46, 45), )):
+        with self.assertAddsMessages(Message('large-entity',
+                                             node=class_def, args=('Large', 46, 45), )):
+            self.walk(node.root())
+
+    def test_module_too_long(self):
+        node = astroid.parse("""
+        def method():  # 1.
+        """ + self._module_statements(45 - 1) + """
+            abc = 1 # one too much
+        """)
+
+        module_def = node
+
+        with self.assertAddsMessages(Message('large-module',
+                                             node=module_def, args=('', 46, 45), )):
+            self.walk(node.root())
+
+    def _module_statements(self, num):  # pylint: disable=no-self-use
+        return """
+            abc = 1
+        """ * num
+
+    def test_module_not_too_long(self):
+        node = astroid.parse("""
+        def method(self):  # 1.
+        """ + self._module_statements(45 - 1))
+
+        with self.assertNoMessages():
+            self.walk(node.root())
+
+    def test_class_not_counted_to_module_before(self):
+        node = astroid.parse("""
+        def method(self):  # 1.
+        """ + self._module_statements(45 - 1) + """
+
+        class JustOkInSize(object):
+            def method(self):  # 1.
+        """ + self._class_statements(45 - 1) + """
+        """)
+
+        with self.assertNoMessages():
+            self.walk(node.root())
+
+    def test_class_not_counted_to_module_after(self):
+        node = astroid.parse("""
+        class JustOkInSize(object):
+            def method(self):  # 1.
+        """ + self._class_statements(45 - 1) + """
+
+        def method(self):  # 1.
+        """ + self._module_statements(45 - 1) + """
+        """)
+
+        with self.assertNoMessages():
             self.walk(node.root())
 
 
@@ -50,13 +102,13 @@ class TestSmallModulesChecker(CheckerTestCase):
 
     def test_few_classes(self):
         node = astroid.parse("""
-        class A:
+        class A(object):
             pass
 
-        class B:
+        class B(object):
             pass
 
-        class C:
+        class C(object):
             pass
         """)
 
@@ -65,42 +117,42 @@ class TestSmallModulesChecker(CheckerTestCase):
 
     def test_too_many_classes(self):
         node = astroid.parse("""
-        class A:
+        class A(object):
             pass
 
-        class B:
+        class B(object):
             pass
 
-        class C:
+        class C(object):
             pass
 
-        class D:
+        class D(object):
             pass
 
-        class E:
+        class E(object):
             pass
 
-        class F:
+        class F(object):
             pass
 
-        class G:
+        class G(object):
             pass
 
-        class H:
+        class H(object):
             pass
 
-        class I:
+        class I(object):
             pass
 
-        class J:
+        class J(object):
             pass
 
-        class K:  # too many
+        class K(object):  # too many
             pass
         """)
 
         module_def = node
 
-        with self.assertAddsMessages(
-            Message('large-module', node=module_def, args=('', 11, 10), )):
+        with self.assertAddsMessages(Message('too-many-classes',
+                                             node=module_def, args=('', 11, 10), )):
             self.walk(node.root())
