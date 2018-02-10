@@ -1,4 +1,5 @@
 """checks for Object Calisthenics rule 9: No properties."""
+
 import six
 from astroid import Decorators, Name, Attribute
 from pylint.checkers import BaseChecker
@@ -27,11 +28,13 @@ class NoPublicAttributesChecker(BaseChecker):
         for attr, _ in six.iteritems(node.instance_attrs):
             if not any(node.instance_attr_ancestors(attr)):
                 if not attr.startswith('_'):
-                    self.add_message('has-public-attributes', node=node, args=(attr, node.name,))
+                    self.add_message('has-public-attributes', node=node,
+                                     args=(attr, node.name,))
 
 
 class NoPropertiesChecker(BaseChecker):
-    """checks for properties - do not use property decorator."""
+    """checks for properties - do not use property decorator or property
+       method in class scope."""
 
     __implements__ = IAstroidChecker
 
@@ -39,15 +42,22 @@ class NoPropertiesChecker(BaseChecker):
     name = 'no-properties'
     priority = -1
     msgs = {
-        'R1292': ('Declarator defines a property "%s"',
+        'R1292': ('Decorator defines a property "%s"',
                   'has-properties',
                   'Object Calisthenics Rule 9'),
     }
     options = ()
 
+    def __init__(self, linter=None):
+        BaseChecker.__init__(self, linter)
+        self._in_class = False
+        self._in_function = False
+
     @check_messages('has-properties')
     def visit_functiondef(self, node):
         """check if for property decorator"""
+        self._in_function = True
+
         decorators = list(node.get_children())[0]
 
         if isinstance(decorators, Decorators):
@@ -65,6 +75,30 @@ class NoPropertiesChecker(BaseChecker):
                     return True
 
         return False
+
+    def leave_functiondef(self, node):  # pylint: disable=unused-argument
+        """remember being outside function"""
+        self._in_function = False
+
+    def visit_classdef(self, node):  # pylint: disable=unused-argument
+        """remember being inside class"""
+        self._in_class = True
+
+    def leave_classdef(self, node):  # pylint: disable=unused-argument
+        """remember being outside class"""
+        self._in_class = False
+
+    def visit_call(self, node):
+        """check for call to property method in class scope"""
+        if not self._in_class or self._in_function:
+            return
+
+        target = node.func  # node is astroid.node_classes.Call
+        if isinstance(target, Name):
+            callee = target.name
+            if callee == 'property':
+                method = node.args[0]
+                self.add_message('has-properties', node=node, args=(method.name,))
 
 
 def register(linter):

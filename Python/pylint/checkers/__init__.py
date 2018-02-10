@@ -14,7 +14,8 @@ import checkers.no_else
 
 # 4. First class collections
 import checkers.first_class_collections
-# * currently knows [], (), list(), set() and comprehensions, add more types of collections
+# * knows [], (), list(), set() and comprehensions.
+# TODO add support for more types of collections
 # * (kind of) DONE
 
 # 5. One dot per line
@@ -23,8 +24,9 @@ import checkers.first_class_collections
 # TODO short names
 # * good-names=reset
 
-# 7. Keep all entities small (no class over 50 lines, no package over 10 files)
+# 7. Keep all entities small
 import checkers.small_entities
+# * no class over 45 statements, no module over 10 classes, no module over 45 statements.
 # * (kind of) DONE
 
 # 8. No classes with more than two instance variables
@@ -34,5 +36,4 @@ import checkers.two_instance_variables
 
 # 9. No getters/setters/properties
 import checkers.no_properties
-# TODO property constructor/class method
 # TODO do not use manual getters/setters

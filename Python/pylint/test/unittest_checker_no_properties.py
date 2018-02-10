@@ -29,9 +29,8 @@ class TestNoPublicAttributesChecker(CheckerTestCase):
 
         class_def = list(node.get_children())[0]
 
-        with self.assertAddsMessages(
-            Message('has-public-attributes', node=class_def,
-                    args=('public_property', 'Bad',), )):
+        with self.assertAddsMessages(Message('has-public-attributes', node=class_def,
+                                             args=('public_property', 'Bad',), )):
             self.walk(node.root())
 
 
@@ -53,8 +52,8 @@ class TestNoPropertiesChecker(CheckerTestCase):
         class_def = list(node.get_children())[0]
         fun_def = list(class_def.get_children())[2]
 
-        with self.assertAddsMessages(
-            Message('has-properties', node=fun_def, args=('temperature',), )):
+        with self.assertAddsMessages(Message('has-properties', node=fun_def,
+                                             args=('temperature',), )):
             self.walk(node.root())
 
     def test_annotated_set_property(self):
@@ -73,11 +72,11 @@ class TestNoPropertiesChecker(CheckerTestCase):
         class_def = list(node.get_children())[0]
         fun_def = list(class_def.get_children())[2]
 
-        with self.assertAddsMessages(
-            Message('has-properties', node=fun_def, args=('temperature',), )):
+        with self.assertAddsMessages(Message('has-properties', node=fun_def,
+                                             args=('temperature',), )):
             self.walk(node.root())
 
-    def next_test_declared_property(self):  # TODO
+    def test_declared_property(self):
         node = astroid.parse("""
         class Bad(object):
             def __init__(self):
@@ -95,7 +94,9 @@ class TestNoPropertiesChecker(CheckerTestCase):
         """)
 
         class_def = list(node.get_children())[0]
+        assign_def = list(class_def.get_children())[4]
+        call_def = assign_def.value
 
-        with self.assertAddsMessages(
-            Message('has-properties', node=class_def, args=('temperature',), )):
+        with self.assertAddsMessages(Message('has-properties', node=call_def,
+                                             args=('get_temperature',), )):
             self.walk(node.root())
