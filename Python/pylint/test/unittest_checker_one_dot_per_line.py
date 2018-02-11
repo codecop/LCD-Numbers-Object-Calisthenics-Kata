@@ -25,13 +25,16 @@ class TestOneDotPerLineChecker(CheckerTestCase):
 
                 # Call and func is Name
                 global_method()
-                # Call and func is Attribute and expr is Call and func is Name - end OK
+                # Call and func is Attribute and expr is Call and func is Name
                 global_method().lower()
 
                 # Call and func is Attribute and expr is Name
                 local.lower()
                 argument.lower()
                 self.method("")
+
+                # Call and func is Attribute and expr is Call and func is Attribute and expr is Name
+                self.method("").title
 
                 # Call and func is Attribute and expr is Attribute and exp is Name "self"
                 self.instance.lower()
@@ -57,7 +60,7 @@ class TestOneDotPerLineChecker(CheckerTestCase):
                 global_method().title().capitalize()
                 local.upper().lower()
                 argument.strip().lower()
-                self.method("").lower()
+                self.method("").title().lower()
                 self.instance.lstrip().rstrip()
 
                 return ""
@@ -74,7 +77,7 @@ class TestOneDotPerLineChecker(CheckerTestCase):
             Message('chained-call', node=fun_def.body[3].value,
                     args=('strip', 'lower',), ),
             Message('chained-call', node=fun_def.body[4].value,
-                    args=('method', 'lower',), ),
+                    args=('title', 'lower',), ),
             Message('chained-call', node=fun_def.body[5].value,
                     args=('lstrip', 'rstrip',), )):
             self.walk(node.root())

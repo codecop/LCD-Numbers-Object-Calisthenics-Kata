@@ -33,6 +33,10 @@ class OneDotPerLineChecker(BaseChecker):
                 func = expr.func
                 if isinstance(func, astroid.node_classes.Attribute):
                     name1 = func.attrname
+                    if isinstance(func.expr, astroid.node_classes.Name) and \
+                                    func.expr.name=='self':
+                        # this is a self function
+                        return
                 elif isinstance(func, astroid.node_classes.Name):
                     # this is a global function call
                     return
