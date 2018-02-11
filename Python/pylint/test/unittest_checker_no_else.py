@@ -42,11 +42,7 @@ class TestNoElseChecker(CheckerTestCase):
                     self._a = 2
         """)
 
-        def first(node, i=0):
-            """Return first/i-th child of children nodes."""
-            return list(node.get_children())[i]
-
-        class_def = first(node)
+        class_def = list(node.get_children())[0]
         fun_def = class_def.body[1]
         if_def = fun_def.body[1]
 
