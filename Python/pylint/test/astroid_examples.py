@@ -1,16 +1,14 @@
-from __future__ import print_function
-
 """Exploring Astroid's AST."""
 
+from __future__ import print_function
 import re
 import astroid
-from astroid import as_string
 
 
 def to_code(astroid_node):
     """Display the parsed tree as code. Build into Astroid."""
-    av = astroid.as_string.AsStringVisitor("    ")
-    print(av(astroid_node))
+    visitor = astroid.as_string.AsStringVisitor("    ")
+    print(visitor(astroid_node))
 
 
 def traverse(astroid_node, visitor):
@@ -21,7 +19,7 @@ def traverse(astroid_node, visitor):
     visitor.leave(astroid_node)
 
 
-class DumpAsXmlVisitor:
+class DumpAsXmlVisitor(object):
     """Visit all nodes as XML as done by PMD."""
 
     def __init__(self):
@@ -43,7 +41,7 @@ class DumpAsXmlVisitor:
     def _details(self, astroid_node):
         lines = re.split("\n", str(astroid_node))
         indented_details = ("\n" + self._intent() + "     ").join(lines)
-        return self._intent() + "<!-- " + indented_details + " -->" + "\n"
+        return self._intent() + "<!-- " + indented_details + " -->"
 
     def leave(self, obj):
         self._number_spaces -= 1
@@ -56,16 +54,33 @@ class DumpAsXmlVisitor:
 
 
 def dump(astroid_node):
+    """Dump the AST as XML as done by PMD."""
     traverse(astroid_node, DumpAsXmlVisitor())
 
 
 if __name__ == '__main__':
-    node = astroid.parse("""
-        a.get_y()
+    NODE = astroid.parse("""
+    def global_method():
+        return ""
+
+    class A(object):
+        def __init__(self):
+            self.instance = ""
+
+        def method(self, argument):
+            local = ""
+
+            global_method().lower()
+            local.lower().lower()
+            argument.lower().lower()
+            self.method("").lower()
+            self.instance.lower().lower()
+
+            return ""
         """)
 
-    print("\n\nxml")
-    dump(node.root())
+    # print("\n\ncode")
+    # to_code(node.root())
 
-    print("\n\ncode")
-    to_code(node.root())
+    print("\n\nxml")
+    dump(NODE.root())

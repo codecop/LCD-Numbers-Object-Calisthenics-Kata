@@ -1,29 +1,42 @@
 """checks for Object Calisthenics rule 5: One dot per line."""
-
+import astroid
 from pylint.checkers import BaseChecker
+from pylint.checkers.utils import check_messages
 from pylint.interfaces import IAstroidChecker
 
 
 class OneDotPerLineChecker(BaseChecker):
-    """TODO."""
+    """checks for nested calls."""
 
     __implements__ = IAstroidChecker
 
     # configuration section name
-    name = 'xno-else'
+    name = 'nested-calls'
     priority = -1
     msgs = {
-        'R1251': ('TODO ',
-                  'xif-has-else',
+        'R1251': ('Chained call "%s" followed by "%s"',
+                  'chained-call',
                   'Object Calisthenics Rule 5'),
     }
     options = ()
 
-    # @check_messages('if-has-else')
-    # def visit_if(self, node):
-    #     """check if for else"""
-    #     if node.orelse:
-    #         self.add_message('if-has-else', node=node)
+    @check_messages('chained-call')
+    def visit_call(self, node):
+        """check call's func"""
+
+        func = node.func
+        if isinstance(func, astroid.node_classes.Attribute):
+            name2 = func.attrname
+            expr = func.expr
+            if isinstance(expr, astroid.node_classes.Call):
+                name1 = '?'
+                func = expr.func
+                if isinstance(func, astroid.node_classes.Attribute):
+                    name1 = func.attrname
+                elif isinstance(func, astroid.node_classes.Name):
+                    # this is a global function call
+                    return
+                self.add_message('chained-call', node=node, args=(name1, name2), )
 
 
 def register(linter):
