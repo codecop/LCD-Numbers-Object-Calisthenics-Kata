@@ -21,6 +21,7 @@ import checkers.first_class_collections
 # 5. One dot per line
 import checkers.one_dot_per_line
 # TODO chained properties
+# TODO property > call
 
 # 6. Don't abbreviate
 # TODO short names
