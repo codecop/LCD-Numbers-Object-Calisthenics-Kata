@@ -69,7 +69,7 @@ class TestSmallEntitiesChecker(CheckerTestCase):
         with self.assertNoMessages():
             self.walk(node.root())
 
-    def test_class_not_counted_to_module_before(self):
+    def test_class_not_counted_to_module_before(self):  # pylint: disable=invalid-name
         node = astroid.parse("""
         def method(self):  # 1.
         """ + self._module_statements(45 - 1) + """
@@ -82,7 +82,7 @@ class TestSmallEntitiesChecker(CheckerTestCase):
         with self.assertNoMessages():
             self.walk(node.root())
 
-    def test_class_not_counted_to_module_after(self):
+    def test_class_not_counted_to_module_after(self):  # pylint: disable=invalid-name
         node = astroid.parse("""
         class JustOkInSize(object):
             def method(self):  # 1.
