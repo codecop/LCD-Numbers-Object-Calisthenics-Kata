@@ -13,6 +13,8 @@ class TestChainedCallsChecker(CheckerTestCase):
         """Test that direct calls are left alone."""
 
         node = astroid.parse("""
+        import mm
+
         global_instance = ""
 
         def global_method():
@@ -29,6 +31,10 @@ class TestChainedCallsChecker(CheckerTestCase):
                 global_method()
                 # Call and func is Attribute and expr is Call and func is Name, OK
                 global_method().lower()
+
+                mm.method()
+                mm.method().lower()
+                mm.a.lower()
 
                 global_instance.lower()
 
@@ -164,6 +170,18 @@ class TestChainedCallsChecker(CheckerTestCase):
                     args=('a', 'lower',), )):
             self.walk(node.root())
 
+    def test_namespace(self):
+        """Test that namespaces are left alone."""
+
+        node = astroid.parse("""
+        import os
+
+        os.path.join("", "")
+        """)
+
+        with self.assertNoMessages():
+            self.walk(node.root())
+
 
 class TestChainedPropertiesChecker(CheckerTestCase):
     """Unit tests for chained properties."""
@@ -173,6 +191,8 @@ class TestChainedPropertiesChecker(CheckerTestCase):
         """Test that direct calls are left alone."""
 
         node = astroid.parse("""
+        import mm
+
         global_instance = ""
 
         def global_method():
@@ -187,6 +207,10 @@ class TestChainedPropertiesChecker(CheckerTestCase):
 
                 global_method().a
                 global_instance.a
+
+                mm.a
+                mm.a.b
+                mm.method().b
 
                 local.a
                 argument.a
