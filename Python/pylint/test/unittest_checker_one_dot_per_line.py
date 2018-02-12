@@ -6,7 +6,7 @@ from checkers.one_dot_per_line import ChainedCallsChecker, ChainedPropertiesChec
 
 
 class TestChainedCallsChecker(CheckerTestCase):
-    """Unit tests for calls only against names."""
+    """Unit tests for chains ending in cals."""
     CHECKER_CLASS = ChainedCallsChecker
 
     def test_direct_calls(self):
@@ -69,7 +69,7 @@ class TestChainedCallsChecker(CheckerTestCase):
                     args=('title', 'lower',), )):
             self.walk(node.root())
 
-    def test_call2_after_attribute(self):
+    def test_call_after_attribute(self):
         """Test that chained calls after attribute are found."""
 
         node = astroid.parse("""
@@ -104,7 +104,7 @@ class TestChainedCallsChecker(CheckerTestCase):
                     args=('lstrip', 'rstrip',), )):
             self.walk(node.root())
 
-    def test_call_after_attribute2(self):
+    def test_attribute_after_attribute(self):
         """Test that calls after chained attribute are found."""
 
         node = astroid.parse("""
@@ -135,6 +135,30 @@ class TestChainedCallsChecker(CheckerTestCase):
                     args=('b', 'lower',), ),
             Message('chained-call', node=fun_def.body[4].value,
                     args=('c', 'rstrip',), )):
+            self.walk(node.root())
+
+    def test_attribute_after_call(self):
+        """Test that calls after attributes after calls are found."""
+
+        node = astroid.parse("""
+        def global_method():
+            return ""
+
+        class A(object):
+            def method(self, argument):
+                global_method().a.capitalize()
+                self.method("").a.lower()
+                return ""
+        """)
+
+        class_def = list(node.get_children())[1]
+        fun_def = class_def.body[0]
+
+        with self.assertAddsMessages(
+            Message('chained-call', node=fun_def.body[0].value,
+                    args=('a', 'capitalize',), ),
+            Message('chained-call', node=fun_def.body[1].value,
+                    args=('a', 'lower',), )):
             self.walk(node.root())
 
 
