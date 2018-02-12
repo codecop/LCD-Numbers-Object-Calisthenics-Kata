@@ -60,19 +60,14 @@ def dump(astroid_node):
 
 if __name__ == '__main__':
     NODE = astroid.parse("""
-        global_instance = ""
+        def global_method():
+            return ""
 
         class A(object):
-            def __init__(self):
-                self.instance = ""
-
             def method(self, argument):
-                local = ""
-
-                global_instance.x.capitalize()
-                local.a.lower()
-                argument.b.lower()
-                self.instance.c.rstrip()
+                global_method().a.x
+                self.method("").a.y
+                return ""
         """)
 
     # print("\n\ncode")
