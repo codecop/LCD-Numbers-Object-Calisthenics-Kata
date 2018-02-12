@@ -96,6 +96,21 @@ class ChainedPropertiesChecker(BaseChecker):
                 # self.instance
                 self.add_message('chained-attribute', node=node, args=(name1, name2), )
 
+        elif isinstance(expr, astroid.node_classes.Call):
+            # call after an attribute
+            name1 = '?'
+            func = expr.func
+            if isinstance(func, astroid.node_classes.Attribute):
+                name1 = func.attrname
+                if isinstance(func.expr, astroid.node_classes.Name) and \
+                                func.expr.name=='self':
+                    # this is a self function
+                    return
+            elif isinstance(func, astroid.node_classes.Name):
+                # this is a global function call
+                return
+            self.add_message('chained-attribute', node=node, args=(name1, name2), )
+
 
 def register(linter):
     """required method to auto register this checker """
