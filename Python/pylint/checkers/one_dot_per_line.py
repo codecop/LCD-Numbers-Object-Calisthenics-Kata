@@ -25,7 +25,7 @@ class ChainedCallsChecker(BaseChecker):
         BaseChecker.__init__(self, linter)
         self.imports = []
 
-    def leave_module(self, node):
+    def leave_module(self, node):  # pylint: disable=unused-argument
         """Remove all imports."""
         self.imports = []
 
@@ -89,7 +89,7 @@ class ChainedPropertiesChecker(BaseChecker):
         BaseChecker.__init__(self, linter)
         self.imports = []
 
-    def leave_module(self, node):
+    def leave_module(self, node):  # pylint: disable=unused-argument
         """Remove all imports."""
         self.imports = []
 
