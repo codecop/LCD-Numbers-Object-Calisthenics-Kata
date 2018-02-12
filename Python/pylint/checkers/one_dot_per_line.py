@@ -85,14 +85,15 @@ class ChainedPropertiesChecker(BaseChecker):
                 # attribute after another call
                 self.add_message('chained-attribute', node=node, args=(name1, name2), )
 
-            elif isinstance(expr, astroid.node_classes.Attribute):
-                # call after an attribute
-                name1 = expr.attrname
-                if isinstance(expr.expr, astroid.node_classes.Name) and \
-                              expr.expr.name=='self':
+            elif isinstance(expr, astroid.node_classes.Name):
+                if expr.name == 'self':
                     # this is a self function
                     return
+                # global or local name
+                self.add_message('chained-attribute', node=node, args=(name1, name2), )
 
+            elif isinstance(expr, astroid.node_classes.Attribute):
+                # self.instance
                 self.add_message('chained-attribute', node=node, args=(name1, name2), )
 
 

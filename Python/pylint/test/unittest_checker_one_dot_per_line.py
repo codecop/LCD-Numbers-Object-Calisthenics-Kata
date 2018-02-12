@@ -302,7 +302,7 @@ class TestChainedPropertiesChecker(CheckerTestCase):
                     args=('lstrip', 'rstrip',), )):
             self.walk(node.root())
 
-    def notest_attribute_after_attribute(self):
+    def test_attribute_after_attribute(self):
         """Test that attributes after chained attribute are found."""
 
         node = astroid.parse("""
@@ -315,10 +315,10 @@ class TestChainedPropertiesChecker(CheckerTestCase):
             def method(self, argument):
                 local = ""
 
-                global_instance.x.capitalize()
-                local.a.lower()
-                argument.b.lower()
-                self.instance.c.rstrip()
+                global_instance.a.x
+                local.b.y
+                argument.c.z
+                self.instance.d.w
         """)
 
         class_def = list(node.get_children())[1]
@@ -326,13 +326,13 @@ class TestChainedPropertiesChecker(CheckerTestCase):
 
         with self.assertAddsMessages(
             Message('chained-attribute', node=fun_def.body[1].value,
-                    args=('x', 'capitalize',), ),
+                    args=('a', 'x',), ),
             Message('chained-attribute', node=fun_def.body[2].value,
-                    args=('a', 'lower',), ),
+                    args=('b', 'y',), ),
             Message('chained-attribute', node=fun_def.body[3].value,
-                    args=('b', 'lower',), ),
+                    args=('c', 'z',), ),
             Message('chained-attribute', node=fun_def.body[4].value,
-                    args=('c', 'rstrip',), )):
+                    args=('d', 'w',), )):
             self.walk(node.root())
 
     def test_attribute_after_call(self):
