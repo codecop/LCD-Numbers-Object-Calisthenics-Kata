@@ -25,8 +25,6 @@ class TestChainedCallsChecker(CheckerTestCase):
 
                 # Call and func is Name
                 global_method()
-                # Call and func is Attribute and expr is Call and func is Name
-                global_method().lower()
 
                 # Call and func is Attribute and expr is Name
                 local.lower()
@@ -43,12 +41,39 @@ class TestChainedCallsChecker(CheckerTestCase):
         with self.assertNoMessages():
             self.walk(node.root())
 
-    def test_chained_calls(self):
-        """Test that chained calls are found."""
+    def test_call_after_call(self):
+        """Test that chained calls after calls are found."""
 
         node = astroid.parse("""
         def global_method():
             return ""
+
+        class A(object):
+            def method(self, argument):
+                # Call and func is Attribute and expr is Call and func is Name, OK
+                global_method().lower()
+
+                global_method().title().capitalize()
+                self.method("").title().lower()
+
+                return ""
+        """)
+
+        class_def = list(node.get_children())[1]
+        fun_def = class_def.body[0]
+
+        with self.assertAddsMessages(
+            Message('chained-call', node=fun_def.body[1].value,
+                    args=('title', 'capitalize',), ),
+            Message('chained-call', node=fun_def.body[2].value,
+                    args=('title', 'lower',), )):
+            self.walk(node.root())
+
+    def test_call2_after_attribute(self):
+        """Test that chained calls after attribute are found."""
+
+        node = astroid.parse("""
+        global_instance = ""
 
         class A(object):
             def __init__(self):
@@ -57,10 +82,9 @@ class TestChainedCallsChecker(CheckerTestCase):
             def method(self, argument):
                 local = ""
 
-                global_method().title().capitalize()
+                global_instance.title().capitalize()
                 local.upper().lower()
                 argument.strip().lower()
-                self.method("").title().lower()
                 self.instance.lstrip().rstrip()
 
                 return ""
@@ -77,9 +101,40 @@ class TestChainedCallsChecker(CheckerTestCase):
             Message('chained-call', node=fun_def.body[3].value,
                     args=('strip', 'lower',), ),
             Message('chained-call', node=fun_def.body[4].value,
-                    args=('title', 'lower',), ),
-            Message('chained-call', node=fun_def.body[5].value,
                     args=('lstrip', 'rstrip',), )):
+            self.walk(node.root())
+
+    def test_call_after_attribute2(self):
+        """Test that calls after chained attribute are found."""
+
+        node = astroid.parse("""
+        global_instance = ""
+
+        class A(object):
+            def __init__(self):
+                self.instance = ""
+
+            def method(self, argument):
+                local = ""
+
+                global_instance.x.capitalize()
+                local.a.lower()
+                argument.b.lower()
+                self.instance.c.rstrip()
+        """)
+
+        class_def = list(node.get_children())[1]
+        fun_def = class_def.body[1]
+
+        with self.assertAddsMessages(
+            Message('chained-call', node=fun_def.body[1].value,
+                    args=('x', 'capitalize',), ),
+            Message('chained-call', node=fun_def.body[2].value,
+                    args=('a', 'lower',), ),
+            Message('chained-call', node=fun_def.body[3].value,
+                    args=('b', 'lower',), ),
+            Message('chained-call', node=fun_def.body[4].value,
+                    args=('c', 'rstrip',), )):
             self.walk(node.root())
 
 
@@ -87,7 +142,7 @@ class TestChainedPropertiesChecker(CheckerTestCase):
     """Unit tests for chained properties."""
     CHECKER_CLASS = ChainedPropertiesChecker
 
-    def test_call_followed_by_property(self):
+    def no_test_call_followed_by_property(self):
         """Test that calls followed by properties are found."""
 
         node = astroid.parse("""
@@ -102,10 +157,10 @@ class TestChainedPropertiesChecker(CheckerTestCase):
                 local = ""
 
                 global_method().title().capitalize
-                local.upper().lower
-                argument.strip().lower
+                #local.upper().lower
+                #argument.strip().lower
                 self.method("").title().lower
-                self.instance.lstrip().rstrip
+                #self.instance.lstrip().rstrip
 
                 return ""
         """)

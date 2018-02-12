@@ -29,7 +29,9 @@ class ChainedCallsChecker(BaseChecker):
         if isinstance(func, astroid.node_classes.Attribute):
             name2 = func.attrname
             expr = func.expr
+
             if isinstance(expr, astroid.node_classes.Call):
+                # call after another call
                 name1 = '?'
                 func = expr.func
                 if isinstance(func, astroid.node_classes.Attribute):
@@ -41,6 +43,16 @@ class ChainedCallsChecker(BaseChecker):
                 elif isinstance(func, astroid.node_classes.Name):
                     # this is a global function call
                     return
+                self.add_message('chained-call', node=node, args=(name1, name2), )
+
+            elif isinstance(expr, astroid.node_classes.Attribute):
+                # call after an attribute
+                name1 = expr.attrname
+                if isinstance(expr.expr, astroid.node_classes.Name) and \
+                              expr.expr.name=='self':
+                    # this is a self function
+                    return
+
                 self.add_message('chained-call', node=node, args=(name1, name2), )
 
 
