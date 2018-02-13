@@ -15,15 +15,16 @@ import checkers.no_else
 # 4. First class collections
 import checkers.first_class_collections
 # * knows [], (), list(), set() and comprehensions.
-# TODO add support for more types of collections
+# TODO add support for more types of collections.
 # * (kind of) DONE
 
 # 5. One dot per line
 import checkers.one_dot_per_line
+# TODO deal with imports with a dot, e.g. os.path -> put "path" into imported list.
 # * DONE
 
 # 6. Don't abbreviate
-# TODO short names
+# TODO add rule to avoid short names (<=3 characters).
 # * good-names=reset
 
 # 7. Keep all entities small

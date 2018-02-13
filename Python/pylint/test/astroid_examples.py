@@ -60,7 +60,7 @@ def dump(astroid_node):
 
 if __name__ == '__main__':
     NODE = astroid.parse("""
-        import os
+        import os.path
 
         os.path.join("", "")
         """)
