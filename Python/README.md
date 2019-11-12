@@ -1,11 +1,11 @@
-## LCD Numbers Kata Object Calisthenics with Pylint Check ##
+# LCD Numbers Kata Object Calisthenics with Pylint Check
 
 This is a template for the [LCD Numbers Kata](http://rubyquiz.com/quiz14.html).
 This is a Python project. It is compatible with both Python 2 and 3.
 Required dependencies are listed in `requirements.txt`.
 Run the script `./run_tests` to run your tests.
 
-## Requirements (copied from Ruby Quiz) ##
+## Requirements (copied from Ruby Quiz)
 
 Write a program that creates an LCD string representation of an integer value
 using a 4x7 grid of space each, using minus and pipe characters for each digit.
@@ -24,7 +24,7 @@ Read more about it at [RubyQuiz](http://rubyquiz.com/quiz14.html).
 
 There are sample LCD outputs in the `test/resources` folder.
 
-## Constraints ##
+## Constraints
 
 [Jeff Bay's Object Calisthenics](http://williamdurand.fr/2013/06/03/object-calisthenics/).
 
@@ -40,9 +40,9 @@ There are sample LCD outputs in the `test/resources` folder.
 
 \*) rule not enforced.
 
-### Checking Code for Compliance ###
+### Checking Code for Compliance
 
-The project contains [Pylint](https://www.pylint.org/) checkers to check code for compliance with Object Calisthenics'.
+The project contains [Pylint](https://www.pylint.org/) checkers to check code for compliance with Object Calisthenics.
 To check the setup run `./run_tests` with the sample code. It will run the tests and show some violations, e.g.:
 
     ************* Module lcd.sample
@@ -51,7 +51,8 @@ To check the setup run `./run_tests` with the sample code. It will run the tests
 
 You can also check the rules on their own with `./run_pylint`.
 
-### Limitations of Checking Code ###
+### Limitations of Checking Code
+
 Obviously code analysis cannot find everything and due to the dynamic nature of Python there is a grey area when working with types:
 Rule #8 (First Class Collections) is partially checked and rule #3 (Wrap All Primitives And Strings) is not checked at all.
 Finally it is very difficult to check for abbreviations, so rule #5 is not enforced as well.
@@ -59,7 +60,4 @@ Finally it is very difficult to check for abbreviations, so rule #5 is not enfor
 You can use `# pylint: disable=<rule name>` comments to suppress false positives.
 I recommend using this rarely. Use your good judgement. The goal of this exercise is to follow all nine rules, not to suppress them.
 
-See my blog post about [Object Calisthenics and how to enforce it](http://blog.code-cop.org/2018/01/compliance-with-object-calisthenics.html) for more details.
-
-### License ###
-This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
+See my blog post about [Object Calisthenics and how to enforce it](https://blog.code-cop.org/2018/01/compliance-with-object-calisthenics.html) for more details.
