@@ -12,9 +12,7 @@
             <outputDirectory>.</outputDirectory>
             <excludes>
                 <exclude>target/</exclude>
-                <exclude>.hg/</exclude>
-                <exclude>.hgignore</exclude>
-                <exclude>.hgtags</exclude>
+                <exclude>.gitignore</exclude>
                 <exclude>.idea/</exclude>
                 <exclude>*.iml</exclude>
                 <!-- do not package Ruby script -->
