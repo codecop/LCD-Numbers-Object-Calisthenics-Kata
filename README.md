@@ -21,7 +21,7 @@ Read more about it at [RubyQuiz](http://rubyquiz.com/quiz14.html).
 
 ## Constraints
 
-[Jeff Bay's Object Calisthenics](http://williamdurand.fr/2013/06/03/object-calisthenics/).
+[Jeff Bay's Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/).
 
 1. Only One Level Of Indentation Per Method.
 1. Don't Use The `else` Keyword.
@@ -39,4 +39,4 @@ The sub folders contain tools to check your code for compliance with Object Cali
 
 ### License
 
-This work is licensed under a [New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
+This work is licensed under a [New BSD License](https://opensource.org/license/bsd-3-clause), see `license.txt` in repository.

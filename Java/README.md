@@ -26,7 +26,7 @@ There are sample LCD outputs in the `src/test/resources` folder.
 
 ## Constraints
 
-[Jeff Bay's Object Calisthenics](http://williamdurand.fr/2013/06/03/object-calisthenics/).
+[Jeff Bay's Object Calisthenics](https://williamdurand.fr/2013/06/03/object-calisthenics/).
 
 1. Only One Level Of Indentation Per Method.
 1. Don't Use The `else` Keyword.
