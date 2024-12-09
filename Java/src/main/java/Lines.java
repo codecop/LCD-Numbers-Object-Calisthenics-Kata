@@ -11,6 +11,10 @@ public class Lines {
         this.lines.addAll(Arrays.asList(lines));
     }
 
+    public void add(Line line) {
+        lines.add(line);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Lines)) {

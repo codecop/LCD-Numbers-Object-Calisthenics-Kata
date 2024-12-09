@@ -36,7 +36,7 @@ class DigitTest {
 
         @Test
         public void shouldShowFilled() {
-            VerticalBar vertical = new VerticalBar(Led.ON, Led.ON);
+            VerticalBars vertical = new VerticalBars(Led.ON, Led.ON);
             Lines lines = vertical.scale(new Size(1));
             assertEquals(new Lines(new Line(" "), new Line("|"), new Line(" "), new Line("|"), new Line(" ")), lines);
         }
