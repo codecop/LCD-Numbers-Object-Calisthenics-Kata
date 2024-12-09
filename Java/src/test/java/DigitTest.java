@@ -14,7 +14,16 @@ class DigitTest {
 
             Line line = horicontal.scale(new Size(1));
 
-            assertEquals(new Line(" - "), line);
+            assertEquals(new Line(" ", "-"), line);
+        }
+
+        @Test
+        public void shouldScaleEmptyOne() {
+            HoricontalBar horicontal = new HoricontalBar(BarIs.EMPTY);
+
+            Line line = horicontal.scale(new Size(1));
+
+            assertEquals(new Line(" ", " "), line);
         }
 
     }

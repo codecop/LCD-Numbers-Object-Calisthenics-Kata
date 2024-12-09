@@ -8,7 +8,9 @@ public class HoricontalBar {
     }
 
     public Line scale(Size size) {
-        return new Line(" - ");
+        String corner = " ";
+        String middle = barIs == BarIs.FILLED ? "-" : " ";
+        return new Line(corner, middle);
     }
 
 }

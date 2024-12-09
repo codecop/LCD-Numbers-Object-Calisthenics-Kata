@@ -2,8 +2,8 @@ public class Line {
 
     private final String characters;
 
-    public Line(String characters) {
-        this.characters = characters;
+    public Line(String corner, String middle) {
+        this.characters = corner + middle + corner;
     }
 
     @Override
