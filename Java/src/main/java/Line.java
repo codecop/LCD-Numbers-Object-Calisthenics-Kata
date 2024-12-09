@@ -1,7 +1,9 @@
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class Line {
+import util.Joinable;
+
+public class Line implements Joinable<Line> {
     // Value Object
 
     private final String characters;
@@ -12,6 +14,7 @@ public class Line {
                 collect(Collectors.joining());
     }
 
+    @Override
     public Line join(Line other) {
         return new Line(characters + other.characters);
     }
@@ -34,10 +37,6 @@ public class Line {
     @Override
     public String toString() {
         return "Line '" + characters + '\'';
-    }
-
-    public static Line join(Line left, Line right) {
-        return left.join(right);
     }
 
 }

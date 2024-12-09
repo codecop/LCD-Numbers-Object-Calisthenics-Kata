@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Lines implements Iterable<Line> {
+import util.Joinable;
+import util.Joiner;
+
+public class Lines implements Iterable<Line>, Joinable<Lines> {
     // First Order Collection
 
     private final List<Line> lines = new ArrayList<>();
@@ -27,21 +30,9 @@ public class Lines implements Iterable<Line> {
         return this;
     }
 
+    @Override
     public Lines join(Lines other) {
-        return join(this.iterator(), other.iterator());
-    }
-
-    private Lines join(Iterator<Line> values, Iterator<Line> otherValues) {
-        Lines result = new Lines();
-
-        while (values.hasNext() && otherValues.hasNext()) {
-            Line next = values.next();
-            Line otherNext = otherValues.next();
-            Line joinedLine = Line.join(next, otherNext);
-            result.add(joinedLine);
-        }
-
-        return result;
+        return new Lines(new Joiner<Line>().join(this, other));
     }
 
     @Override
