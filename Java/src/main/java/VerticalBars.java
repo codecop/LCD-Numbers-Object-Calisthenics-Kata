@@ -11,16 +11,12 @@ public class VerticalBars {
 
     public Lines scale(Size size) {
         Lines lines = new Lines();
-        lines.add(corner());
-        lines.add(new Line("|"));
-        lines.add(corner());
-        lines.add(new Line("|"));
-        lines.add(corner());
+        lines.add(new Line("|", corner(), "|"));
         return lines;
     }
 
-    private Line corner() {
-        return new Line(" ");
+    private String corner() { // NOPMD this is no getter
+        return " ";
     }
 
 }
