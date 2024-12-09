@@ -24,7 +24,10 @@ public class DigitsLookup {
     }
 
     public Lcd getFor(Digit digit) {
-        // could return an E for unknown numbers or throw an exception.
+        if (!digitsByNumber.containsKey(digit)) {
+            throw new IllegalArgumentException(digit.toString());
+            // could return an E for unknown numbers or throw an exception.
+        }
         return digitsByNumber.get(digit);
     }
 

@@ -1,10 +1,17 @@
 public class Digit {
     // Value Object
 
-    private final int value;
+    private final String value;
+
+    public Digit(String value) {
+        if (!value.matches("\\d")) {
+            throw new IllegalArgumentException(value);
+        }
+        this.value = value;
+    }
 
     public Digit(int value) {
-        this.value = value;
+        this(Integer.toString(value));
     }
 
     @Override
@@ -13,12 +20,17 @@ public class Digit {
             return false;
         }
         Digit that = (Digit) other;
-        return value == that.value;
+        return value.equals(that.value);
     }
 
     @Override
     public int hashCode() {
-        return value;
+        return value.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Digit '" + value + "'";
     }
 
 }
