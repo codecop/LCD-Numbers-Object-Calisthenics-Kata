@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class LinesTest {
 
     @Test
-    void test() {
+    void shouldJoin() {
         Lines left = new Lines( //
                 new Line(" - "), //
                 new Line("|  "), //
