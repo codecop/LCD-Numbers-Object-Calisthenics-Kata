@@ -61,3 +61,7 @@ class VerticalBar = Pipes and empty
 * Analyse the problem ... 30'
 * Code the infrastructure, LcdDigit, Digit, Lookup, all but main ... 2h'
 * Main (not working) - started hacking ... 30'
+* Create further elements like `Number` and `LcdNumber` which are first class collections and 
+  contain looping code. Original Main would have worked, used wrong API. - 1h15'
+
+Total Kata 4h

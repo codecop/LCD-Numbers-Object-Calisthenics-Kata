@@ -1,4 +1,5 @@
 import lcd.Size;
+import print.Lines;
 
 public class Main {
 
@@ -6,9 +7,10 @@ public class Main {
         Size size = new Size(2);
         int number = 575;
 
-        DigitsLookup lookup = new DigitsLookup();
+        Lines lines = new DigitsLookup(). //
+                getFor(new number.Number(number)). // this is a LoD violation!
+                scale(size); //
 
-        number.Number n = new number.Number(number);
-        //        System.out.println(lines);
+        System.out.println(lines);
     }
 }
