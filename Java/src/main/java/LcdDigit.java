@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.List;
 
+import print.Lines;
+
 public class LcdDigit implements Lcd {
     // First Order Collection
 

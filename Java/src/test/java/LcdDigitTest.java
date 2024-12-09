@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import print.Line;
+import print.Lines;
+
 class LcdDigitTest {
 
     @Test

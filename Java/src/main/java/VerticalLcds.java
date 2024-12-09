@@ -1,3 +1,5 @@
+import print.Line;
+import print.Lines;
 
 public class VerticalLcds implements Lcd {
 

@@ -57,4 +57,4 @@ class VerticalBar = Pipes and empty
 
 * Analyse the problem ... 30'
 * Code the infrastructure, LcdDigit, Digit, Lookup, all but main ... 2h'
-* Main (not working) ... 30'
+* Main (not working) - started hacking ... 30'

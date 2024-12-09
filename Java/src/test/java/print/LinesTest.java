@@ -1,6 +1,10 @@
+package print;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import print.Line;
+import print.Lines;
 
 class LinesTest {
 

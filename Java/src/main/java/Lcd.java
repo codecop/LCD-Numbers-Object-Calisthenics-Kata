@@ -1,3 +1,4 @@
+import print.Lines;
 
 public interface Lcd {
 
