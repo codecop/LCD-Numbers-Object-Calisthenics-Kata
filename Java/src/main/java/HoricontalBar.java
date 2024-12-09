@@ -1,5 +1,5 @@
 
-public class HoricontalBar {
+public class HoricontalBar implements LineScaler {
 
     private final Led middleLed;
 
@@ -7,8 +7,9 @@ public class HoricontalBar {
         this.middleLed = middleLed;
     }
 
-    public Line scale(Size size) {
-        return new Line(corner(), barOf(size), corner());
+    @Override
+    public Lines scale(Size size) {
+        return new Lines(new Line(corner(), barOf(size), corner()));
     }
 
     private String corner() { // NOPMD this is no getter

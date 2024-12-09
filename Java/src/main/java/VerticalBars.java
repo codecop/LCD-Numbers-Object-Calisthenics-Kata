@@ -1,5 +1,5 @@
 
-public class VerticalBars {
+public class VerticalBars implements LineScaler {
 
     private final Led leftLed;
     private final Led rightLed;
@@ -9,6 +9,7 @@ public class VerticalBars {
         this.rightLed = rightLed;
     }
 
+    @Override
     public Lines scale(Size size) {
         Lines lines = new Lines();
         size.loop(() -> {
