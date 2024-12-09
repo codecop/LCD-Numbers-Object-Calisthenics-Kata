@@ -1,10 +1,10 @@
 
 public class HoricontalBar {
 
-    private final Led led; // NOPMD name is appropriate
+    private final Led middleLed;
 
-    public HoricontalBar(Led led) { // NOPMD name is appropriate
-        this.led = led;
+    public HoricontalBar(Led middleLed) {
+        this.middleLed = middleLed;
     }
 
     public Line scale(Size size) {
@@ -17,7 +17,7 @@ public class HoricontalBar {
 
     private String barOf(Size size) {
         String symbol = " ";
-        if (led == Led.ON) {
+        if (middleLed == Led.ON) {
             symbol = "-";
         }
         return times(symbol, size);
