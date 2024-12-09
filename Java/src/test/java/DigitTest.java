@@ -12,21 +12,33 @@ class DigitTest {
         public void shouldShowFilled() {
             HoricontalBar horicontal = new HoricontalBar(Led.ON);
             Line line = horicontal.scale(new Size(1));
-            assertEquals(new Line(" ", "-"), line);
+            assertEquals(new Line(" ", "-", " "), line);
         }
 
         @Test
         public void shouldShowEmpty() {
             HoricontalBar horicontal = new HoricontalBar(Led.OFF);
             Line line = horicontal.scale(new Size(1));
-            assertEquals(new Line(" ", " "), line);
+            assertEquals(new Line(" ", " ", " "), line);
         }
 
         @Test
         public void shouldScaleTwo() {
             HoricontalBar horicontal = new HoricontalBar(Led.ON);
             Line line = horicontal.scale(new Size(2));
-            assertEquals(new Line(" ", "--"), line);
+            assertEquals(new Line(" ", "--", " "), line);
+        }
+
+    }
+
+    @Nested
+    class VerticalBarTest {
+
+        @Test
+        public void shouldShowFilled() {
+            VerticalBar vertical = new VerticalBar(Led.ON, Led.ON);
+            Lines lines = vertical.scale(new Size(1));
+            assertEquals(new Lines(new Line(" "), new Line("|"), new Line(" "), new Line("|"), new Line(" ")), lines);
         }
 
     }

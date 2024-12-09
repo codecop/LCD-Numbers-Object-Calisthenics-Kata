@@ -47,6 +47,12 @@ Everything must be return line by line for printing.
 class HoricontalBar = 1) 
 class VerticalBar = Pipes and empty
 
+## Findings
+
+* Size knows the number something has to loop but it cannot
+  do the looping over Strings or lines because they are primitive.
+  So it needs to export a loop construct.
+
 ## Times
 
 * Analyse Problem ... 30'

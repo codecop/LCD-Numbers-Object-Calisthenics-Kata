@@ -1,13 +1,12 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Line {
 
     private final String characters;
 
-    public Line(String corner, String middle) {
-        this.characters = corner + middle + corner;
-    }
-
-    public Line(String corner, String middle, String corner2) {
-        this.characters = corner + middle + corner2;
+    public Line(String... parts) {
+        this.characters = Arrays.asList(parts).stream().collect(Collectors.joining());
     }
 
     @Override
