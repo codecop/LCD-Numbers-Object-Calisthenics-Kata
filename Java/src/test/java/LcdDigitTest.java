@@ -8,15 +8,15 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-class DigitTest {
+class LcdDigitTest {
 
     @Test
     public void shouldShowFive() throws IOException {
-        Digit five = new Digit(new HoricontalBar(Led.ON), //
-                new VerticalBars(Led.ON, Led.OFF), //
-                new HoricontalBar(Led.ON), //
-                new VerticalBars(Led.OFF, Led.ON), //
-                new HoricontalBar(Led.ON));
+        LcdDigit five = new LcdDigit(new HoricontalLcd(Led.ON), //
+                new VerticalLcds(Led.ON, Led.OFF), //
+                new HoricontalLcd(Led.ON), //
+                new VerticalLcds(Led.OFF, Led.ON), //
+                new HoricontalLcd(Led.ON));
 
         Lines lines = five.scale(new Size(1));
 
@@ -33,8 +33,8 @@ class DigitTest {
     public void shouldKnowDigit7() throws IOException {
         int scale = 2;
         int number = 7;
-        Digits digits = new Digits();
-        Digit seven = digits.getFor(number);
+        DigitsLookup digits = new DigitsLookup();
+        LcdDigit seven = digits.getFor(number);
         Lines lines = seven.scale(new Size(scale));
         assertEquals(linesFromTestDataFor(scale, number), lines);
     }

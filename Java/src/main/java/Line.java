@@ -2,11 +2,14 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Line {
+    // Value Object
 
     private final String characters;
 
     public Line(String... parts) {
-        this.characters = Arrays.asList(parts).stream().collect(Collectors.joining());
+        this.characters = Arrays.asList(parts). //
+                stream(). //
+                collect(Collectors.joining());
     }
 
     @Override

@@ -1,26 +1,26 @@
 
-public class HoricontalBar implements LineScaler {
+public class HoricontalLcd implements PartLcd {
 
     private final Led middleLed;
 
-    public HoricontalBar(Led middleLed) {
+    public HoricontalLcd(Led middleLed) {
         this.middleLed = middleLed;
     }
 
     @Override
     public Lines scale(Size size) {
-        return new Lines(new Line(corner(), barOf(size), corner()));
+        return new Lines(new Line(corner(), lcdOf(size), corner()));
     }
 
     private String corner() { // NOPMD this is no getter
         return " ";
     }
 
-    private String barOf(Size size) {
-        return times(horicontalSymbolFor(middleLed), size);
+    private String lcdOf(Size size) {
+        return times(symbolFor(middleLed), size);
     }
 
-    private String horicontalSymbolFor(Led aLed) {
+    private String symbolFor(Led aLed) {
         if (aLed == Led.ON) {
             return "-";
         }

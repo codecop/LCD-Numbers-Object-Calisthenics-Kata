@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Lines {
+    // First Order Collection
 
     private final List<Line> lines = new ArrayList<>();
 

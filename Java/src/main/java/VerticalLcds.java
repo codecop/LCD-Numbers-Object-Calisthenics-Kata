@@ -1,10 +1,10 @@
 
-public class VerticalBars implements LineScaler {
+public class VerticalLcds implements PartLcd {
 
     private final Led leftLed;
     private final Led rightLed;
 
-    public VerticalBars(Led leftLed, Led rightLed) {
+    public VerticalLcds(Led leftLed, Led rightLed) {
         this.leftLed = leftLed;
         this.rightLed = rightLed;
     }
@@ -19,12 +19,12 @@ public class VerticalBars implements LineScaler {
     }
 
     private Line createLine(Size size) {
-        return new Line(verticalSymbolFor(leftLed), //
+        return new Line(symbolFor(leftLed), //
                 times(space(), size), //
-                verticalSymbolFor(rightLed));
+                symbolFor(rightLed));
     }
 
-    private String verticalSymbolFor(Led aLed) {
+    private String symbolFor(Led aLed) {
         if (aLed == Led.ON) {
             return "|";
         }

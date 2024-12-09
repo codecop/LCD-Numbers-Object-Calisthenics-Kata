@@ -1,4 +1,5 @@
 public class Size {
+    // Value Object
 
     private final int value;
 

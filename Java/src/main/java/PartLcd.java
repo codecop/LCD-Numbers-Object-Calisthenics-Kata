@@ -1,5 +1,5 @@
 
-public interface LineScaler {
+public interface PartLcd {
 
     Lines scale(Size size);
 
