@@ -11,8 +11,14 @@ public class VerticalBars {
 
     public Lines scale(Size size) {
         Lines lines = new Lines();
-        lines.add(new Line(verticalSymbolFor(leftLed), space(), verticalSymbolFor(rightLed)));
+        size.loop(() -> {
+            lines.add(createLine());
+        });
         return lines;
+    }
+
+    private Line createLine() {
+        return new Line(verticalSymbolFor(leftLed), space(), verticalSymbolFor(rightLed));
     }
 
     private String verticalSymbolFor(Led aLed) {
