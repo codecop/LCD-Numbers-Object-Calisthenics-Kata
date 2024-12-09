@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import number.Digit;
+import number.Number;
 
 public class DigitsLookup {
 
@@ -31,6 +32,14 @@ public class DigitsLookup {
             // could return an E for unknown numbers or throw an exception.
         }
         return digitsByNumber.get(digit);
+    }
+
+    public Lcd getFor(number.Number number) {
+        LcdNumber lcdNumber = new LcdNumber();
+        for (Digit digit : number) {
+            lcdNumber.add(getFor(digit));
+        }
+        return lcdNumber;
     }
 
 }

@@ -14,7 +14,7 @@ import print.Lines;
 class LcdDigitTest {
 
     @Test
-    public void shouldShowFive() throws IOException {
+    void shouldShowFive() throws IOException {
         LcdDigit five = new LcdDigit(new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.ON, Led.OFF), //
                 new HoricontalLcd(Led.ON), //

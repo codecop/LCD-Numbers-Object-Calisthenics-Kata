@@ -14,13 +14,23 @@ import print.Lines;
 
 class DigitLookupTest {
 
+    private DigitsLookup digits = new DigitsLookup();
+
     @Test
-    public void shouldKnowDigit7() throws IOException {
+    void shouldKnowSingleDigit7() throws IOException {
         int scale = 2;
         int number = 7;
-        DigitsLookup digits = new DigitsLookup();
         Lcd seven = digits.getFor(new Digit(number));
         Lines lines = seven.scale(new Size(scale));
+        assertEquals(linesFromTestDataFor(scale, number), lines);
+    }
+
+    @Test
+    void shouldKnowDigits5() throws IOException {
+        int scale = 1;
+        int number = 5;
+        Lcd both = digits.getFor(new number.Number(number));
+        Lines lines = both.scale(new Size(scale));
         assertEquals(linesFromTestDataFor(scale, number), lines);
     }
 
@@ -31,5 +41,4 @@ class DigitLookupTest {
                 collect(Collectors.toList());
         return new Lines(lines);
     }
-
 }
