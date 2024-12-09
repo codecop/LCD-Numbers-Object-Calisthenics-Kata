@@ -29,6 +29,16 @@ class DigitTest {
         assertEquals(linesFromTestDataFor(1, 5), lines);
     }
 
+    @Test
+    public void shouldKnowDigit7() throws IOException {
+        int scale = 2;
+        int number = 7;
+        Digits digits = new Digits();
+        Digit seven = digits.getFor(number);
+        Lines lines = seven.scale(new Size(scale));
+        assertEquals(linesFromTestDataFor(scale, number), lines);
+    }
+
     private Lines linesFromTestDataFor(int size, int digit) throws IOException {
         String fileName = "src/test/resources/size_" + size + "/number " + digit + ".txt";
         List<Line> lines = Files.lines(Paths.get(fileName)). // NOPMD fluent interface
