@@ -11,12 +11,10 @@ public class Main {
 
         DigitsLookup lookup = new DigitsLookup();
 
-        String[] digits = Integer.toString(number).split("");
-        Lines lines = Arrays.stream(digits). //
-                map(Digit::new). //
-                map(lookup::getFor). //
-                map(lcdDigit -> lcdDigit.scale(size)). //
-                reduce(new Lines(), Lines::join); // TODO still not working, why?
-        System.out.println(lines);
+        number.Number n = new number.Number(number);
+//                map(lookup::getFor). //
+//                map(lcdDigit -> lcdDigit.scale(size)). //
+//                reduce(new Lines(), Lines::join); // TODO still not working, why?
+//        System.out.println(lines);
     }
 }

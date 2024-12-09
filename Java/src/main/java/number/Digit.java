@@ -3,17 +3,13 @@ package number;
 public class Digit {
     // Value Object
 
-    private final String value;
-
-    public Digit(String value) {
-        if (!value.matches("\\d")) {
-            throw new IllegalArgumentException(value);
-        }
-        this.value = value;
-    }
+    private final int value;
 
     public Digit(int value) {
-        this(Integer.toString(value));
+        if (value < 0 || value > 9) {
+            throw new IllegalArgumentException("" + value);
+        }
+        this.value = value;
     }
 
     @Override
@@ -22,12 +18,12 @@ public class Digit {
             return false;
         }
         Digit that = (Digit) other;
-        return value.equals(that.value);
+        return value == that.value;
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return value;
     }
 
     @Override

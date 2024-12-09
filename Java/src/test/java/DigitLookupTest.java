@@ -17,14 +17,14 @@ class DigitLookupTest {
     @Test
     public void shouldKnowDigit7() throws IOException {
         int scale = 2;
-        String number = "7";
+        int number = 7;
         DigitsLookup digits = new DigitsLookup();
         Lcd seven = digits.getFor(new Digit(number));
         Lines lines = seven.scale(new Size(scale));
         assertEquals(linesFromTestDataFor(scale, number), lines);
     }
 
-    private Lines linesFromTestDataFor(int size, String digit) throws IOException {
+    private Lines linesFromTestDataFor(int size, int digit) throws IOException {
         String fileName = "src/test/resources/size_" + size + "/number " + digit + ".txt";
         List<Line> lines = Files.lines(Paths.get(fileName)). // NOPMD fluent interface
                 map(Line::new). //

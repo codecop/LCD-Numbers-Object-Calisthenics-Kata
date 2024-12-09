@@ -53,6 +53,9 @@ class VerticalBar = Pipes and empty
   do the looping over Strings or lines because they are primitive.
   So it needs to export a loop construct.
 
+* In Java I can escape the getters with tricks like equals or 
+  Iterable which do not look like getting.
+
 ## Times
 
 * Analyse the problem ... 30'

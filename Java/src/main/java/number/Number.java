@@ -1,9 +1,8 @@
 package number;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Number implements Iterable<Digit> {
 
@@ -13,11 +12,23 @@ public class Number implements Iterable<Digit> {
         this.digits = mapToDigits(number);
     }
 
-    private List<Digit> mapToDigits(int number) {
-        String[] singleDigits = Integer.toString(number).split("");
-        return Arrays.stream(singleDigits). //
-                map(Digit::new). //
-                collect(Collectors.toList());
+    private static List<Digit> mapToDigits(int number) {
+        // return Integer.toString(number). //
+        //    chars(). //
+        //    mapToObj(c -> Character.valueOf((char) c)). //
+        //    map(Object::toString). //
+        //    map(Digit::new). //
+        //    collect(Collectors.toList());
+
+        List<Digit> result = new ArrayList<>();
+
+        String digits = Integer.toString(number);
+        for (int i = 0; i < digits.length(); i++) {
+            int value = digits.charAt(i) - '0';
+            result.add(new Digit(value));
+        }
+
+        return result;
     }
 
     @Override
