@@ -16,11 +16,14 @@ public class HoricontalBar {
     }
 
     private String barOf(Size size) {
-        String symbol = " ";
-        if (middleLed == Led.ON) {
-            symbol = "-";
+        return times(horicontalSymbolFor(middleLed), size);
+    }
+
+    private String horicontalSymbolFor(Led aLed) {
+        if (aLed == Led.ON) {
+            return "-";
         }
-        return times(symbol, size);
+        return " ";
     }
 
     private String times(String symbol, Size size) {

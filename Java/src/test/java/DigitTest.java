@@ -41,6 +41,13 @@ class DigitTest {
             assertEquals(new Lines(new Line("| |")), lines);
         }
 
+        @Test
+        public void shouldShowNotFilled() {
+            VerticalBars vertical = new VerticalBars(Led.ON, Led.OFF);
+            Lines lines = vertical.scale(new Size(1));
+            assertEquals(new Lines(new Line("|  ")), lines);
+        }
+
     }
 
     @Test
