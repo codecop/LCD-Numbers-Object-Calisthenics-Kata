@@ -1,11 +1,17 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 class DigitTest {
 
     @Test
-    public void shouldShowFive() {
+    public void shouldShowFive() throws IOException {
         Digit five = new Digit(new HoricontalBar(Led.ON), //
                 new VerticalBars(Led.ON, Led.OFF), //
                 new HoricontalBar(Led.ON), //
@@ -14,12 +20,21 @@ class DigitTest {
 
         Lines lines = five.scale(new Size(1));
 
-        assertEquals(new Lines(//
+        assertEquals(new Lines( //
                 new Line(" - "), //
                 new Line("|  "), //
                 new Line(" - "), //
                 new Line("  |"), //
                 new Line(" - ")), lines);
+        assertEquals(linesFromTestDataFor(1, 5), lines);
+    }
+
+    private Lines linesFromTestDataFor(int size, int digit) throws IOException {
+        String fileName = "src/test/resources/size_" + size + "/number " + digit + ".txt";
+        List<Line> lines = Files.lines(Paths.get(fileName)). // NOPMD fluent interface
+                map(Line::new). //
+                collect(Collectors.toList());
+        return new Lines(lines);
     }
 
 }

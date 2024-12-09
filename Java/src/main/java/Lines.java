@@ -11,6 +11,10 @@ public class Lines {
         this.lines.addAll(Arrays.asList(lines));
     }
 
+    public Lines(List<Line> lines) {
+        this.lines.addAll(lines);
+    }
+
     public void add(Line line) {
         lines.add(line);
     }
