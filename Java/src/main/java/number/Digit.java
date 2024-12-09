@@ -1,3 +1,5 @@
+package number;
+
 public class Digit {
     // Value Object
 

@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import number.Digit;
+
 public class DigitsLookup {
 
     private final Map<Digit, LcdDigit> digitsByNumber = new HashMap<>();

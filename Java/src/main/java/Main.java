@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+import number.Digit;
 import print.Lines;
 
 public class Main {

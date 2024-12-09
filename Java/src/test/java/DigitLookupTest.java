@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import number.Digit;
 import print.Line;
 import print.Lines;
 
