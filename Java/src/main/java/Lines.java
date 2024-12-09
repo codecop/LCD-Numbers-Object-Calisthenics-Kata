@@ -15,6 +15,11 @@ public class Lines {
         lines.add(line);
     }
 
+    public Lines append(Lines other) {
+        lines.addAll(other.lines);
+        return this;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Lines)) {
