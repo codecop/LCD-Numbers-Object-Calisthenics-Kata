@@ -56,7 +56,7 @@ class BarTest {
         public void shouldScaleTwo() {
             VerticalBars vertical = new VerticalBars(Led.OFF, Led.ON);
             Lines lines = vertical.scale(new Size(2));
-            assertEquals(new Lines(new Line("  |"), new Line("  |")), lines);
+            assertEquals(new Lines(new Line("   |"), new Line("   |")), lines);
         }
 
     }

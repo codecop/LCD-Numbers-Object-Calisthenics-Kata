@@ -25,7 +25,7 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Line [" + characters + ']';
+        return "Line '" + characters + '\'';
     }
 
 }

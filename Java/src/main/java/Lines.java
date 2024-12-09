@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Lines {
 
@@ -36,6 +37,13 @@ public class Lines {
     @Override
     public int hashCode() {
         return Objects.hash(lines);
+    }
+
+    @Override
+    public String toString() {
+        return "Lines\n" + lines.stream(). // NOPMD fluent interface
+                map(Line::toString). //
+                collect(Collectors.joining("\n"));
     }
 
 }

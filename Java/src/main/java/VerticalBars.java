@@ -13,13 +13,15 @@ public class VerticalBars implements LineScaler {
     public Lines scale(Size size) {
         Lines lines = new Lines();
         size.loop(() -> {
-            lines.add(createLine());
+            lines.add(createLine(size));
         });
         return lines;
     }
 
-    private Line createLine() {
-        return new Line(verticalSymbolFor(leftLed), space(), verticalSymbolFor(rightLed));
+    private Line createLine(Size size) {
+        return new Line(verticalSymbolFor(leftLed), //
+                times(space(), size), //
+                verticalSymbolFor(rightLed));
     }
 
     private String verticalSymbolFor(Led aLed) {
@@ -27,6 +29,14 @@ public class VerticalBars implements LineScaler {
             return "|";
         }
         return " ";
+    }
+
+    private String times(String symbol, Size size) {
+        StringBuilder buffer = new StringBuilder();
+        size.loop(() -> {
+            buffer.append(symbol);
+        });
+        return buffer.toString();
     }
 
     private String space() { // NOPMD this is no getter
