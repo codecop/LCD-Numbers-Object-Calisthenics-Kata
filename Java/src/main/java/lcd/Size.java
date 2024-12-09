@@ -1,3 +1,5 @@
+package lcd;
+
 public class Size {
     // Value Object
 

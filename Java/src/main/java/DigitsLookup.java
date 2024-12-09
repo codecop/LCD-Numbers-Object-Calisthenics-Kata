@@ -1,6 +1,12 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import lcd.HoricontalLcd;
+import lcd.Lcd;
+import lcd.LcdDigit;
+import lcd.LcdNumber;
+import lcd.Led;
+import lcd.VerticalLcds;
 import number.Digit;
 
 public class DigitsLookup {

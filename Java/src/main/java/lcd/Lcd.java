@@ -1,3 +1,5 @@
+package lcd;
+
 import print.Lines;
 
 public interface Lcd {

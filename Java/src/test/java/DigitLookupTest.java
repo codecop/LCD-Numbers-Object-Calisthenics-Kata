@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import lcd.Lcd;
+import lcd.Size;
 import number.Digit;
 import print.Line;
 import print.Lines;
@@ -18,7 +20,7 @@ class DigitLookupTest {
 
     @Test
     void shouldKnowSingleDigit7() throws IOException {
-        int scale = 2;
+        int scale = 3;
         int number = 7;
         Lcd seven = digits.getFor(new Digit(number));
         Lines lines = seven.scale(new Size(scale));

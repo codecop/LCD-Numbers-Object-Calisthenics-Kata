@@ -1,10 +1,8 @@
 package print;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import print.Line;
-import print.Lines;
 
 class LinesTest {
 

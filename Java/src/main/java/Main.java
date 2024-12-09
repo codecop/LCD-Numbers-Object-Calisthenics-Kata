@@ -1,3 +1,5 @@
+import lcd.Size;
+
 public class Main {
 
     public static void main(String[] args) { // NOPMD this is API

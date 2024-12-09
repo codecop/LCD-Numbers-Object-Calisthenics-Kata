@@ -1,3 +1,5 @@
+package lcd;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -15,7 +17,8 @@ class LcdDigitTest {
 
     @Test
     void shouldShowFive() throws IOException {
-        LcdDigit five = new LcdDigit(new HoricontalLcd(Led.ON), //
+        LcdDigit five = new LcdDigit( //
+                new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.ON, Led.OFF), //
                 new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.OFF, Led.ON), //
