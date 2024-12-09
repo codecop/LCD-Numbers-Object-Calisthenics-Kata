@@ -10,16 +10,15 @@ class DigitTest {
 
         @Test
         public void shouldScaleOne() {
-            HoricontalBar horicontal = new HoricontalBar(Bar.FILLED);
+            HoricontalBar horicontal = new HoricontalBar(BarIs.FILLED);
 
-            horicontal.scale(new Size(1));
-            
-            assertEquals("", horicontal.toString());
+            Line line = horicontal.scale(new Size(1));
+
+            assertEquals(new Line(" - "), line);
         }
-        
+
     }
-    
-    
+
     @Test
     public void shouldSample() {
         assertEquals(2, 1 + 1);

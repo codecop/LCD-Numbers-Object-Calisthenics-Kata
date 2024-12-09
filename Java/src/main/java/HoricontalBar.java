@@ -1,12 +1,14 @@
 
 public class HoricontalBar {
 
-    public HoricontalBar(Bar filled) {
-        // TODO Auto-generated constructor stub
+    private final BarIs barIs;
+
+    public HoricontalBar(BarIs barIs) {
+        this.barIs = barIs;
     }
 
-    public void scale(Size size) {
-        // TODO Auto-generated method stub
+    public Line scale(Size size) {
+        return new Line(" - ");
     }
 
 }
