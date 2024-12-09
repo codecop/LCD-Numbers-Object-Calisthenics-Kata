@@ -14,7 +14,9 @@ public class LcdNumber implements Lcd {
 
     @Override
     public Lines scale(Size size) {
-        return digits.get(0).scale(size);
+        return digits.stream(). // NOPMD fluent API but has violations
+                map(lcdDigit -> lcdDigit.scale(size)). //
+                reduce(Lines::join).get();
     }
 
 }

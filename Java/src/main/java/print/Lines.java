@@ -35,10 +35,7 @@ public class Lines implements Iterable<Line>, Joinable<Lines> {
     @Override
     public Lines join(Lines other) {
         List<Line> newLines = new Joiner<Line>().join(this, other);
-        // return new Lines(newLines);
-        lines.clear();
-        lines.addAll(newLines);
-        return this;
+        return new Lines(newLines);
     }
 
     @Override

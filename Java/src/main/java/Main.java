@@ -7,9 +7,6 @@ public class Main {
         DigitsLookup lookup = new DigitsLookup();
 
         number.Number n = new number.Number(number);
-        //                map(lookup::getFor). //
-        //                map(lcdDigit -> lcdDigit.scale(size)). //
-        //                reduce(new Lines(), Lines::join); // TODO still not working, why?
         //        System.out.println(lines);
     }
 }

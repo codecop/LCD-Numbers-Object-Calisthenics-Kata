@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import number.Digit;
-import number.Number;
 
 public class DigitsLookup {
 
