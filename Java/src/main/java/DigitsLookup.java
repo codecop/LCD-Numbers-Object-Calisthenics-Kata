@@ -3,17 +3,17 @@ import java.util.Map;
 
 public class DigitsLookup {
 
-    private final Map<Integer, LcdDigit> digitsByNumber = new HashMap<>();
+    private final Map<Digit, LcdDigit> digitsByNumber = new HashMap<>();
 
     public DigitsLookup() {
-        digitsByNumber.put(5, new LcdDigit(//
+        digitsByNumber.put(new Digit(5), new LcdDigit(//
                 new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.ON, Led.OFF), //
                 new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.OFF, Led.ON), //
                 new HoricontalLcd(Led.ON)));
 
-        digitsByNumber.put(7, new LcdDigit(//
+        digitsByNumber.put(new Digit(7), new LcdDigit(//
                 new HoricontalLcd(Led.ON), //
                 new VerticalLcds(Led.OFF, Led.ON), //
                 new HoricontalLcd(Led.OFF), //
@@ -23,9 +23,9 @@ public class DigitsLookup {
         // add other numbers...
     }
 
-    public LcdDigit getFor(int number) {
+    public Lcd getFor(Digit digit) {
         // could return an E for unknown numbers or throw an exception.
-        return digitsByNumber.get(number);
+        return digitsByNumber.get(digit);
     }
 
 }

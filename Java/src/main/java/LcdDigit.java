@@ -1,12 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class LcdDigit implements PartLcd {
+public class LcdDigit implements Lcd {
     // First Order Collection
 
-    private final List<PartLcd> parts;
+    private final List<Lcd> parts;
 
-    public LcdDigit(PartLcd... parts) {
+    public LcdDigit(Lcd... parts) {
         this.parts = Arrays.asList(parts);
     }
 

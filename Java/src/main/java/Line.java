@@ -23,6 +23,7 @@ public class Line {
 
     @Override
     public int hashCode() {
+        // not needed
         return characters.hashCode();
     }
 

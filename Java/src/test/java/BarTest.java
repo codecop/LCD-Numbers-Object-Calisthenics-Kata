@@ -14,21 +14,21 @@ class BarTest {
 
         @Test
         public void shouldShowFilled() {
-            PartLcd horicontal = new HoricontalLcd(Led.ON);
+            Lcd horicontal = new HoricontalLcd(Led.ON);
             Lines lines = horicontal.scale(new Size(1));
             assertEqualsLine(" - ", lines);
         }
 
         @Test
         public void shouldShowEmpty() {
-            PartLcd horicontal = new HoricontalLcd(Led.OFF);
+            Lcd horicontal = new HoricontalLcd(Led.OFF);
             Lines lines = horicontal.scale(new Size(1));
             assertEqualsLine("   ", lines);
         }
 
         @Test
         public void shouldScaleTwo() {
-            PartLcd horicontal = new HoricontalLcd(Led.ON);
+            Lcd horicontal = new HoricontalLcd(Led.ON);
             Lines lines = horicontal.scale(new Size(2));
             assertEqualsLine(" -- ", lines);
         }

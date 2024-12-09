@@ -1,5 +1,5 @@
 
-public class VerticalLcds implements PartLcd {
+public class VerticalLcds implements Lcd {
 
     private final Led leftLed;
     private final Led rightLed;

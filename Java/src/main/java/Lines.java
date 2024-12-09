@@ -37,6 +37,7 @@ public class Lines {
 
     @Override
     public int hashCode() {
+        // not needed
         return Objects.hash(lines);
     }
 

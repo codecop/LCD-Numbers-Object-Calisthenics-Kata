@@ -15,7 +15,7 @@ class DigitLookupTest {
         int scale = 2;
         int number = 7;
         DigitsLookup digits = new DigitsLookup();
-        LcdDigit seven = digits.getFor(number);
+        Lcd seven = digits.getFor(new Digit(number));
         Lines lines = seven.scale(new Size(scale));
         assertEquals(linesFromTestDataFor(scale, number), lines);
     }

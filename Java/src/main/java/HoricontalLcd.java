@@ -1,5 +1,5 @@
 
-public class HoricontalLcd implements PartLcd {
+public class HoricontalLcd implements Lcd {
 
     private final Led middleLed;
 
