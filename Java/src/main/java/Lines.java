@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Lines {
+public class Lines implements Iterable<Line> {
     // First Order Collection
 
     private final List<Line> lines = new ArrayList<>();
@@ -24,6 +25,28 @@ public class Lines {
     public Lines append(Lines other) {
         lines.addAll(other.lines);
         return this;
+    }
+
+    public Lines join(Lines other) {
+        return join(this.iterator(), other.iterator());
+    }
+
+    private Lines join(Iterator<Line> values, Iterator<Line> otherValues) {
+        Lines result = new Lines();
+
+        while (values.hasNext() && otherValues.hasNext()) {
+            Line next = values.next();
+            Line otherNext = otherValues.next();
+            Line joinedLine = Line.join(next, otherNext);
+            result.add(joinedLine);
+        }
+
+        return result;
+    }
+
+    @Override
+    public Iterator<Line> iterator() {
+        return lines.iterator();
     }
 
     @Override

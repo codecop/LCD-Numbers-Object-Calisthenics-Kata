@@ -12,6 +12,10 @@ public class Line {
                 collect(Collectors.joining());
     }
 
+    public Line join(Line other) {
+        return new Line(characters + other.characters);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Line)) {
@@ -30,6 +34,10 @@ public class Line {
     @Override
     public String toString() {
         return "Line '" + characters + '\'';
+    }
+
+    public static Line join(Line left, Line right) {
+        return left.join(right);
     }
 
 }
