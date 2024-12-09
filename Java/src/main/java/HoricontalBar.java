@@ -1,16 +1,34 @@
 
 public class HoricontalBar {
 
-    private final BarIs barIs;
+    private final Led led; // NOPMD name is appropriate
 
-    public HoricontalBar(BarIs barIs) {
-        this.barIs = barIs;
+    public HoricontalBar(Led led) { // NOPMD name is appropriate
+        this.led = led;
     }
 
     public Line scale(Size size) {
-        String corner = " ";
-        String middle = barIs == BarIs.FILLED ? "-" : " ";
-        return new Line(corner, middle);
+        return new Line(corner(), barOf(size), corner());
+    }
+
+    private String corner() { // NOPMD this is no getter
+        return " ";
+    }
+
+    private String barOf(Size size) {
+        String symbol = " ";
+        if (led == Led.ON) {
+            symbol = "-";
+        }
+        return times(symbol, size);
+    }
+
+    private String times(String symbol, Size size) {
+        StringBuilder buffer = new StringBuilder();
+        size.loop(() -> {
+            buffer.append(symbol);
+        });
+        return buffer.toString();
     }
 
 }

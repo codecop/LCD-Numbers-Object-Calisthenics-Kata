@@ -9,21 +9,24 @@ class DigitTest {
     class HoricontalBarTest {
 
         @Test
-        public void shouldScaleOne() {
-            HoricontalBar horicontal = new HoricontalBar(BarIs.FILLED);
-
+        public void shouldShowFilled() {
+            HoricontalBar horicontal = new HoricontalBar(Led.ON);
             Line line = horicontal.scale(new Size(1));
-
             assertEquals(new Line(" ", "-"), line);
         }
 
         @Test
-        public void shouldScaleEmptyOne() {
-            HoricontalBar horicontal = new HoricontalBar(BarIs.EMPTY);
-
+        public void shouldShowEmpty() {
+            HoricontalBar horicontal = new HoricontalBar(Led.OFF);
             Line line = horicontal.scale(new Size(1));
-
             assertEquals(new Line(" ", " "), line);
+        }
+
+        @Test
+        public void shouldScaleTwo() {
+            HoricontalBar horicontal = new HoricontalBar(Led.ON);
+            Line line = horicontal.scale(new Size(2));
+            assertEquals(new Line(" ", "--"), line);
         }
 
     }

@@ -6,6 +6,12 @@ public class Size {
         this.value = value;
     }
 
+    public void loop(Runnable block) {
+        for (int i = 0; i < value; i++) {
+            block.run();
+        }
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Size)) {

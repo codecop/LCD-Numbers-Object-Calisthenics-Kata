@@ -6,6 +6,10 @@ public class Line {
         this.characters = corner + middle + corner;
     }
 
+    public Line(String corner, String middle, String corner2) {
+        this.characters = corner + middle + corner2;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Line)) {
