@@ -1,6 +1,4 @@
-import lcd.Lcd;
 import lcd.Size;
-import print.Lines;
 
 public class Main {
 
@@ -11,10 +9,7 @@ public class Main {
         number.Number number = new number.Number(argument1);
         Size size = new Size(argument2);
 
-        DigitsLookup digitsLookup = new DigitsLookup();
-        Lcd lcdNumber = digitsLookup.getFor(number);
-        Lines lines = lcdNumber.scale(size);
-
-        lines.println();
+        new DigitsLookup().getFor(number).scale(size).println(); // NOPMD This is a massive violation ;-)
     }
+
 }
