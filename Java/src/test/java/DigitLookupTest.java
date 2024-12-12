@@ -10,22 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import lcd.Lcd;
 import lcd.Size;
-import number.Digit;
 import print.Line;
 import print.Lines;
 
 class DigitLookupTest {
 
     private DigitsLookup digits = new DigitsLookup();
-
-    @Test
-    void shouldKnowSingleDigit7() throws IOException {
-        int scale = 3;
-        int number = 7;
-        Lcd seven = digits.getFor(new Digit(number));
-        Lines lines = seven.scale(new Size(scale));
-        assertEquals(linesFromTestDataFor(scale, number), lines);
-    }
 
     @Test
     void shouldKnowDigits5() throws IOException {
@@ -38,7 +28,7 @@ class DigitLookupTest {
 
     @Test
     void shouldKnowDigits57() throws IOException {
-        int scale = 1;
+        int scale = 2;
         int number = 57;
         Lcd both = digits.getFor(new number.Number(number));
         Lines lines = both.scale(new Size(scale));

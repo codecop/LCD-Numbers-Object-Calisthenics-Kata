@@ -16,7 +16,7 @@ public class Lines {
     }
 
     public Lines(Line... lines) {
-        // helper constructor
+        // helper constructor for tests
         this(Arrays.asList(lines));
     }
 
