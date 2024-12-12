@@ -10,14 +10,10 @@ public class Size {
     }
 
     public void loop(Runnable block) {
+        // real logic
         for (int i = 0; i < value; i++) {
             block.run();
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Size [" + value + ']';
     }
 
 }

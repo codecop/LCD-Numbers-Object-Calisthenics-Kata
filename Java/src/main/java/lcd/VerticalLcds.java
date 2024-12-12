@@ -18,16 +18,17 @@ public class VerticalLcds implements Lcd {
 
     @Override
     public Lines scale(Size size) {
+        // real logic
         List<Line> lines = new ArrayList<>();
-        size.loop(() -> {
-            lines.add(createLine(size));
-        });
+        Line line = createLine(size);
+        size.loop(() -> lines.add(line));
         return new Lines(lines);
     }
 
     private Line createLine(Size size) {
+        // real logic
         String characters = symbolFor(leftLed) + //
-                times(space(), size) + //
+                spaceOf(size) + //
                 symbolFor(rightLed);
         return new Line(characters);
     }
@@ -39,16 +40,16 @@ public class VerticalLcds implements Lcd {
         return " ";
     }
 
+    private String spaceOf(Size size) {
+        return times(" ", size);
+    }
+
     private String times(String symbol, Size size) {
         StringBuilder buffer = new StringBuilder();
         size.loop(() -> {
             buffer.append(symbol);
         });
         return buffer.toString();
-    }
-
-    private String space() { // NOPMD this is no getter
-        return " ";
     }
 
 }

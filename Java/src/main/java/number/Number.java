@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Number {
-    // First Order Collection
+    // First Class Collection
 
     private final List<Digit> digits = new ArrayList<>();
 
@@ -19,6 +19,7 @@ public class Number {
     }
 
     public void forEach(Consumer<Digit> consumer) {
+        // delegate to elements
         digits.forEach(consumer);
     }
 

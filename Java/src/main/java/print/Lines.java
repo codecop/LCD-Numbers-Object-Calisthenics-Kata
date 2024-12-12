@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Lines {
-    // First Order Collection
+    // First Class Collection
 
     private final List<Line> lines = new ArrayList<>();
 
@@ -35,6 +35,7 @@ public class Lines {
     }
 
     private List<Line> join(List<Line> other) {
+        // delegate to elements
         List<Line> newLines = new ArrayList<>();
 
         Iterator<Line> otherIterator = other.iterator();
