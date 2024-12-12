@@ -1,18 +1,20 @@
+import lcd.Lcd;
 import lcd.Size;
 import print.Lines;
 
 public class Main {
 
     public static void main(String[] args) { // NOPMD String[] is API
-        Size size = new Size(2);
-        int input = 575;
+        int argument1 = 755;
+        int argument2 = 3;
 
-        number.Number number = new number.Number(input);
+        number.Number number = new number.Number(argument1);
+        Size size = new Size(argument2);
 
-        Lines lines = new DigitsLookup(). //
-                getFor(number). // this is a LoD violation!
-                scale(size); //
+        DigitsLookup digitsLookup = new DigitsLookup();
+        Lcd lcdNumber = digitsLookup.getFor(number);
+        Lines lines = lcdNumber.scale(size);
 
-        System.out.println(lines);
+        lines.println();
     }
 }

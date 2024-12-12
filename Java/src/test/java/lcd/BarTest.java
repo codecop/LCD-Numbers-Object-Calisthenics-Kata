@@ -2,6 +2,8 @@ package lcd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +13,7 @@ import print.Lines;
 class BarTest {
 
     void assertEqualsLine(String expected, Lines actual) {
-        assertEquals(new Lines(new Line(expected)), actual);
+        assertEquals(new Lines(Arrays.asList(new Line(expected))), actual);
     }
 
     @Nested
@@ -61,7 +63,7 @@ class BarTest {
         void shouldScaleTwo() {
             VerticalLcds vertical = new VerticalLcds(Led.OFF, Led.ON);
             Lines lines = vertical.scale(new Size(2));
-            assertEquals(new Lines(new Line("   |"), new Line("   |")), lines);
+            assertEquals(new Lines(Arrays.asList(new Line("   |"), new Line("   |"))), lines);
         }
 
     }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,12 +27,12 @@ class LcdDigitTest {
 
         Lines lines = five.scale(new Size(1));
 
-        assertEquals(new Lines( //
+        assertEquals(new Lines(Arrays.asList( //
                 new Line(" - "), //
                 new Line("|  "), //
                 new Line(" - "), //
                 new Line("  |"), //
-                new Line(" - ")), lines);
+                new Line(" - "))), lines);
         assertEquals(linesFromTestDataFor(1, 5), lines);
     }
 

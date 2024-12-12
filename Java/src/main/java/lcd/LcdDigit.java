@@ -1,6 +1,7 @@
 package lcd;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import print.Lines;
@@ -17,9 +18,11 @@ public class LcdDigit implements Lcd {
     @Override
     public Lines scale(Size size) {
         // delegate to elements
-        return parts.stream(). //
-                map(part -> part.scale(size)). //
-                reduce(new Lines(), Lines::append);
+        Lines lines = new Lines(Collections.emptyList());
+        for (Lcd part : parts) {
+            lines.append(part.scale(size));
+        }
+        return lines;
     }
 
 }

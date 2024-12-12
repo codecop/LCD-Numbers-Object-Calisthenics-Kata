@@ -17,6 +17,10 @@ public class Line implements Joinable<Line> {
         return new Line(characters + other.characters);
     }
 
+    public void println() {
+        System.out.println(characters);
+    }
+
     @Override
     public boolean equals(Object other) {
         // this is only needed for assertEquals in unit tests.

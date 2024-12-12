@@ -1,7 +1,6 @@
 package print;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -15,17 +14,9 @@ public class Lines {
         this.lines.addAll(lines);
     }
 
-    public Lines(Line... lines) {
-        // helper constructor for tests
-        this(Arrays.asList(lines));
-    }
-
-    public Lines append(Lines other) {
+    public void append(Lines other) {
         // real logic
-        List<Line> newLines = new ArrayList<>();
-        newLines.addAll(lines);
-        newLines.addAll(other.lines);
-        return new Lines(newLines);
+        lines.addAll(other.lines);
     }
 
     public Lines join(Lines other) {
@@ -45,6 +36,13 @@ public class Lines {
         }
 
         return newLines;
+    }
+
+    public void println() {
+        // delegate to elements
+        for (Line line : lines) {
+            line.println();
+        }
     }
 
     @Override
