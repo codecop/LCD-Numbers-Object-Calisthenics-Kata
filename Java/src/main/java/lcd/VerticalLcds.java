@@ -1,5 +1,8 @@
 package lcd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import print.Line;
 import print.Lines;
 
@@ -15,17 +18,18 @@ public class VerticalLcds implements Lcd {
 
     @Override
     public Lines scale(Size size) {
-        Lines lines = new Lines();
+        List<Line> lines = new ArrayList<>();
         size.loop(() -> {
             lines.add(createLine(size));
         });
-        return lines;
+        return new Lines(lines);
     }
 
     private Line createLine(Size size) {
-        return new Line(symbolFor(leftLed), //
-                times(space(), size), //
-                symbolFor(rightLed));
+        String characters = symbolFor(leftLed) + //
+                times(space(), size) + //
+                symbolFor(rightLed);
+        return new Line(characters);
     }
 
     private String symbolFor(Led aLed) {

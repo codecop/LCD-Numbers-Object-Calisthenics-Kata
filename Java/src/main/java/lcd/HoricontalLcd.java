@@ -13,7 +13,9 @@ public class HoricontalLcd implements Lcd {
 
     @Override
     public Lines scale(Size size) {
-        return new Lines(new Line(corner(), lcdOf(size), corner()));
+        String characters = corner() + lcdOf(size) + corner();
+        Line line = new Line(characters);
+        return new Lines(line);
     }
 
     private String corner() { // NOPMD this is no getter
