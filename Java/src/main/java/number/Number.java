@@ -1,39 +1,25 @@
 package number;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class Number implements Iterable<Digit> {
+public class Number {
+    // First Order Collection
 
-    private final List<Digit> digits;
+    private final List<Digit> digits = new ArrayList<>();
 
     public Number(int number) {
-        this.digits = mapToDigits(number);
-    }
-
-    private static List<Digit> mapToDigits(int number) {
-        // return Integer.toString(number). //
-        //    chars(). //
-        //    mapToObj(c -> Character.valueOf((char) c)). //
-        //    map(Object::toString). //
-        //    map(Digit::new). //
-        //    collect(Collectors.toList());
-
-        List<Digit> result = new ArrayList<>();
-
-        String digits = Integer.toString(number);
-        for (int i = 0; i < digits.length(); i++) {
-            int value = digits.charAt(i) - '0';
-            result.add(new Digit(value));
+        // real logic
+        String digitCharacters = Integer.toString(number);
+        for (int i = 0; i < digitCharacters.length(); i++) {
+            int value = digitCharacters.charAt(i) - '0';
+            digits.add(new Digit(value));
         }
-
-        return result;
     }
 
-    @Override
-    public Iterator<Digit> iterator() {
-        return digits.iterator();
+    public void forEach(Consumer<Digit> consumer) {
+        digits.forEach(consumer);
     }
 
 }

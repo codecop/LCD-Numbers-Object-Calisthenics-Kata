@@ -6,9 +6,6 @@ public class Digit {
     private final int value;
 
     public Digit(int value) {
-        if (value < 0 || value > 9) {
-            throw new IllegalArgumentException("" + value);
-        }
         this.value = value;
     }
 
@@ -23,12 +20,8 @@ public class Digit {
 
     @Override
     public int hashCode() {
+        // needed for lookup
         return value;
-    }
-
-    @Override
-    public String toString() {
-        return "Digit '" + value + "'";
     }
 
 }

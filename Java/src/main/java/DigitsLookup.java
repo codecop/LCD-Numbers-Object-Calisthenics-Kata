@@ -41,9 +41,7 @@ public class DigitsLookup {
 
     public Lcd getFor(number.Number number) {
         LcdNumber lcdNumber = new LcdNumber();
-        for (Digit digit : number) {
-            lcdNumber.add(getFor(digit));
-        }
+        number.forEach(digit -> lcdNumber.add(getFor(digit)));
         return lcdNumber;
     }
 

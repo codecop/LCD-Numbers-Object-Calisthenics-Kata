@@ -9,9 +9,7 @@ class NumberTest {
     @Test
     void shouldContainDigit() {
         number.Number number = new number.Number(1);
-        for (Digit actual : number) {
-            assertEquals(new Digit(1), actual);
-        }
+        number.forEach(actual -> assertEquals(new Digit(1), actual));
     }
 
 }
