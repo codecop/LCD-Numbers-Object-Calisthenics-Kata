@@ -56,12 +56,15 @@ class VerticalBar = Pipes and empty
 * In Java I can escape the getters with tricks like equals or 
   Iterable which do not look like getting.
 
+* Good old for loops have no issues, Stream usage is always flagged.
+
 ## Times
 
 * Analyse the problem ... 30'
 * Code the infrastructure, LcdDigit, Digit, Lookup, all but main ... 2h'
 * Main (not working) - started hacking ... 30'
 * Create further elements like `Number` and `LcdNumber` which are first class collections and 
-  contain looping code. Original Main would have worked, used wrong API. - 1h15'
+  contain looping code. Original Main would have worked, used wrong API. ... 1h15'
+* Simplify and remove extra code, document design elements. ... 1h
 
-Total Kata 4h
+Total Kata 5h
