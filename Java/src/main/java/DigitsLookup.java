@@ -6,11 +6,8 @@ import lcd.Lcd;
 import lcd.LcdDigit;
 import lcd.LcdNumber;
 import lcd.Led;
-import lcd.Size;
 import lcd.VerticalLcds;
 import number.Digit;
-import number.Number;
-import print.Lines;
 
 public class DigitsLookup {
     // First Class Collection
